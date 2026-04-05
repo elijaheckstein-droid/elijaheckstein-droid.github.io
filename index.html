@@ -1,1 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toploader Trading Co.</title>
+  <meta name="description" content="Toploader Trading Co. sells Pokémon singles, slabs, sealed product, and buys collections." />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --panel: #171a21;
+      --panel-2: #1f2430;
+      --text: #f3f4f6;
+      --muted: #b6bcc8;
+      --accent: #d62828;
+      --border: #2b3240;
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #0f1115 0%, #131720 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 17, 21, 0.88);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 52px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(214, 40, 40, 0.12);
+      border: 1px solid rgba(214, 40, 40, 0.35);
+      color: #ffd5d5;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 4.5rem);
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 650px;
+      margin: 0 0 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .button.secondary {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .quick-links {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .quick-links a {
+      color: var(--text);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    }
+
+    .showcase {
+      display: grid;
+      gap: 14px;
+    }
+
+    .photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    section {
+      padding: 24px 0 56px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 720px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .info-card h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+    }
+
+    .info-card p,
+    .info-card ul {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .info-card ul {
+      padding-left: 18px;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .social {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text);
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <!-- Replace logo.png with your actual logo file -->
+          <img src="logo.png" alt="Toploader Trading Co. logo" onerror="this.style.display='none'; this.parentNode.textContent='TT';" />
+        </div>
+        <span>Toploader Trading Co.</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#find-us">Find Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Pokémon singles, slabs, sealed, and collections</div>
+          <h1>Buy, sell, trade, and connect with Toploader Trading Co.</h1>
+          <p>
+            We specialize in Pokémon singles, slabs, sealed product, and collection buying. Find us at regional card shows, online, and through direct messages for inventory questions, collection offers, and want lists.
+          </p>
+
+          <div class="cta-row">
+            <a class="button primary" href="mailto:hello@toploadertrading.com">Email Us</a>
+            <a class="button secondary" href="#find-us">See Where to Find Us</a>
+          </div>
+
+          <div class="quick-links">
+            Domain: <a href="https://toploadertrading.com">toploadertrading.com</a>
+          </div>
+        </div>
+
+        <div class="card showcase">
+          <div class="photo">
+            <!-- Replace with an actual inventory or table photo -->
+            <img src="show-photo-1.jpg" alt="Toploader Trading Co. inventory display" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a clean booth or inventory photo here';" />
+          </div>
+          <div class="grid-2">
+            <div class="photo">
+              <img src="show-photo-2.jpg" alt="Pokémon cards for sale" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a binder or showcase card photo';" />
+            </div>
+            <div class="photo">
+              <img src="show-photo-3.jpg" alt="Card show setup" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a table setup or sealed product photo';" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">What we do</h2>
+        <p class="section-subtitle">
+          Toploader Trading Co. focuses on Pokémon cards with a practical approach to buying and selling. Whether you are looking for singles, slabs, sealed product, or a fair conversation about moving a collection, we aim to keep it straightforward.
+        </p>
+
+        <div class="grid-3">
+          <div class="card info-card">
+            <h3>Inventory</h3>
+            <p>Pokémon singles, slabs, sealed product, and rotating show inventory.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Collections</h3>
+            <p>We also look at collections and can talk through condition, value ranges, and what to expect.</p>
+          </div>
+          <div class="card info-card">
+            <h3>Shows</h3>
+            <p>Catch us at local and regional card shows with fresh inventory and trade options.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="find-us">
+      <div class="container">
+        <h2 class="section-title">Where to find us</h2>
+        <p class="section-subtitle">
+          Update this section with your next show dates, cities, and any regular events where people can expect to see you.
+        </p>
+
+        <div class="grid-2">
+          <div class="card info-card">
+            <h3>Upcoming shows</h3>
+            <ul>
+              <li>Madisonville Card Show • Add next date here</li>
+              <li>Add second show or event here</li>
+              <li>Add third show or event here</li>
+            </ul>
+          </div>
+
+          <div class="card info-card">
+            <h3>Online</h3>
+            <p>Use your social pages to post inventory, show previews, sold items, and collection buying updates.</p>
+            <div class="socials">
+              <a class="social" href="#">Facebook</a>
+              <a class="social" href="#">Instagram</a>
+              <a class="social" href="#">TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Want to ask about inventory, a collection, or where we will be next? Reach out below.
+        </p>
+
+        <div class="card info-card">
+          <h3>Email</h3>
+          <p><a href="mailto:hello@toploadertrading.com">hello@toploadertrading.com</a></p>
+          <br />
+          <h3>Suggested contact uses</h3>
+          <ul>
+            <li>Collection inquiries</li>
+            <li>Inventory questions</li>
+            <li>Show and event inquiries</li>
+            <li>Want lists</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Toploader Trading Co. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
