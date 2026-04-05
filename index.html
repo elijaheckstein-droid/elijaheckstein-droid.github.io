@@ -14,6 +14,10 @@
       --off-white: #f7f5f2;
       --light: #edebe7;
       --mid: #d0cec9;
+      --black: #0d0d0d;
+      --black-2: #161616;
+      --black-3: #1f1f1f;
+      --black-border: rgba(255,255,255,0.08);
       --text: #1a1814;
       --text-2: #5a5650;
       --text-3: #9a9690;
@@ -41,14 +45,14 @@
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* Header */
-    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; }
+    header { background: var(--black); border-bottom: 1px solid var(--black-border); position: sticky; top: 0; z-index: 200; }
     .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .brand { display: flex; align-items: center; gap: 11px; }
-    .brand-logo { width: 38px; height: 38px; border-radius: 8px; overflow: hidden; background: var(--light); display: grid; place-items: center; font-family: var(--font-display); font-size: 1rem; color: var(--text-2); flex-shrink: 0; }
+    .brand-logo { width: 38px; height: 38px; border-radius: 8px; overflow: hidden; background: var(--black-3); border: 1px solid var(--black-border); display: grid; place-items: center; font-family: var(--font-display); font-size: 1rem; color: rgba(255,255,255,0.4); flex-shrink: 0; }
     .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
-    .brand-name { font-family: var(--font-display); font-size: 1.45rem; letter-spacing: 0.04em; color: var(--text); line-height: 1; }
-    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.88rem; font-weight: 500; color: var(--text-2); }
-    .nav-links a:hover { color: var(--text); }
+    .brand-name { font-family: var(--font-display); font-size: 1.45rem; letter-spacing: 0.04em; color: white; line-height: 1; }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.5); }
+    .nav-links a:hover { color: white; }
     .nav-cta { background: var(--accent) !important; color: white !important; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
     .nav-cta:hover { opacity: 0.88; }
 
@@ -76,15 +80,20 @@
     .hero-badge-sub { font-size: 0.75rem; color: var(--text-2); font-weight: 400; }
 
     /* Trust bar */
-    .trust-bar { border-bottom: 1px solid var(--border); background: var(--white); }
+    .trust-bar { border-bottom: 1px solid var(--black-border); background: var(--black-2); }
     .trust-inner { display: flex; justify-content: space-between; padding: 20px 0; gap: 16px; flex-wrap: wrap; }
-    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-2); font-weight: 500; }
-    .trust-icon { width: 32px; height: 32px; background: var(--accent-light); border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.55); font-weight: 500; }
+    .trust-icon { width: 32px; height: 32px; background: rgba(200,16,46,0.15); border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
     .trust-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
     /* Sections */
     .section { padding: 72px 0; }
     .section-alt { background: var(--off-white); }
+    .section-dark { background: var(--black); }
+    .section-dark .section-label { color: var(--accent); }
+    .section-dark .section-label::before { background: var(--accent); }
+    .section-dark .section-h { color: white; }
+    .section-dark .section-sub { color: rgba(255,255,255,0.5); }
     .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
     .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
     .section-h { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: 0.02em; line-height: 1; margin-bottom: 10px; color: var(--text); }
@@ -92,24 +101,23 @@
 
     /* Cards grid */
     .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .poke-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
-    .poke-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--mid); }
-    .poke-card-img { width: 100%; aspect-ratio: 3/4; background: var(--light); display: grid; place-items: center; color: var(--text-3); font-size: 0.82rem; text-align: center; overflow: hidden; }
+    .poke-card { background: var(--black-3); border: 1px solid var(--black-border); border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .poke-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.5); transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
+    .poke-card-img { width: 100%; aspect-ratio: 3/4; background: var(--black-2); display: grid; place-items: center; color: rgba(255,255,255,0.25); font-size: 0.82rem; text-align: center; overflow: hidden; }
     .poke-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
     .poke-card:hover .poke-card-img img { transform: scale(1.03); }
-    .poke-card-body { padding: 14px 16px 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-    .poke-card-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .poke-card-body { padding: 14px 16px 16px; border-top: 1px solid var(--black-border); display: flex; align-items: center; justify-content: space-between; }
+    .poke-card-name { font-weight: 600; font-size: 0.9rem; color: white; }
     .poke-card-price { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent); letter-spacing: 0.02em; }
-    .featured-footer { margin-top: 28px; color: var(--text-2); font-size: 0.88rem; }
-    .featured-footer a { color: var(--text); font-weight: 600; border-bottom: 1px solid var(--border-strong); }
-    .featured-footer a:hover { border-color: var(--text); }
+    .featured-footer { margin-top: 28px; color: rgba(255,255,255,0.45); font-size: 0.88rem; }
+    .featured-footer a { color: rgba(255,255,255,0.85); font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.2); }
+    .featured-footer a:hover { border-color: white; color: white; }
 
     /* About */
-    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
-    .about-block { background: var(--white); padding: 36px 28px; }
-    .about-num { font-family: var(--font-display); font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 8px; }
-    .about-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
-    .about-desc { color: var(--text-2); font-size: 0.87rem; line-height: 1.6; }
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--black-border); border: 1px solid var(--black-border); border-radius: 14px; overflow: hidden; }
+    .about-block { background: var(--black-2); padding: 36px 28px; }
+    .about-label { font-family: var(--font-display); font-size: 2.4rem; color: var(--accent); line-height: 1; margin-bottom: 10px; letter-spacing: 0.02em; }
+    .about-desc { color: rgba(255,255,255,0.5); font-size: 0.87rem; line-height: 1.6; }
 
     /* Shows */
     .shows-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
@@ -198,7 +206,7 @@
         <a href="#featured">Featured</a>
         <a href="#shows">Shows</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cta" href="mailto:info@toploadertrading.com">Get in Touch</a>
+        <a class="nav-cta" href="/cdn-cgi/l/email-protection#630a0d050c23170c130f0c02070611171102070a0d044d000c0e">Get in Touch</a>
       </nav>
     </div>
   </header>
@@ -252,7 +260,7 @@
       </div>
     </div>
 
-    <section class="section" id="featured">
+    <section class="section section-dark" id="featured">
       <div class="container">
         <div class="section-label">Featured inventory</div>
         <h2 class="section-h">Cards at the next show</h2>
@@ -269,15 +277,15 @@
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section section-dark">
       <div class="container">
         <div class="section-label">What we do</div>
         <h2 class="section-h">The hobby, done right</h2>
         <p class="section-sub">Fair prices, straight talk, and a genuine love for Pokémon cards. We started from a personal collection and grew from there.</p>
         <div class="about-grid">
-          <div class="about-block"><div class="about-num">01</div><div class="about-label">Singles &amp; slabs</div><div class="about-desc">Raw singles and PSA/BGS graded slabs from sets old and new. We know the market and price accordingly.</div></div>
-          <div class="about-block"><div class="about-num">02</div><div class="about-label">Sealed product</div><div class="about-desc">Booster packs, ETBs, and sealed sets at competitive show pricing. Stock rotates with every event.</div></div>
-          <div class="about-block"><div class="about-num">03</div><div class="about-label">We buy collections</div><div class="about-desc">Looking to sell? We buy collections of all sizes. Send us photos and we'll give you a straight answer on value.</div></div>
+          <div class="about-block"><div class="about-label">Singles &amp; slabs</div><div class="about-desc">Raw singles and PSA/BGS graded slabs from sets old and new. We know the market and price accordingly.</div></div>
+          <div class="about-block"><div class="about-label">Sealed product</div><div class="about-desc">Booster packs, ETBs, and sealed sets at competitive show pricing. Stock rotates with every event.</div></div>
+          <div class="about-block"><div class="about-label">We buy collections</div><div class="about-desc">Looking to sell? We buy collections of all sizes. Send us photos and we'll give you a straight answer on value.</div></div>
         </div>
       </div>
     </section>
@@ -330,9 +338,9 @@
           <div class="contact-card">
             <h3>Email us</h3>
             <ul class="email-list">
-              <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="mailto:info@toploadertrading.com">info@toploadertrading.com</a></li>
-              <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="mailto:elijah@toploadertrading.com">elijah@toploadertrading.com</a></li>
-              <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="mailto:brynn@toploadertrading.com">brynn@toploadertrading.com</a></li>
+              <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="/cdn-cgi/l/email-protection#f69f989099b68299869a9997929384828497929f9891d895999b"><span class="__cf_email__" data-cfemail="a2cbccc4cde2d6cdd2cecdc3c6c7d0d6d0c3c6cbccc58cc1cdcf">[email&#160;protected]</span></a></li>
+              <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="/cdn-cgi/l/email-protection#2b4e4742414a436b5f445b47444a4f4e595f594a4f42454c05484446"><span class="__cf_email__" data-cfemail="52373e3b38333a12263d223e3d33363720262033363b3c357c313d3f">[email&#160;protected]</span></a></li>
+              <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="/cdn-cgi/l/email-protection#afcdddd6c1c1efdbc0dfc3c0cecbcadddbddcecbc6c1c881ccc0c2"><span class="__cf_email__" data-cfemail="2547575c4b4b65514a55494a44414057515744414c4b420b464a48">[email&#160;protected]</span></a></li>
             </ul>
           </div>
           <div class="contact-card">
@@ -367,5 +375,7 @@
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
 </body>
+
 </html>
