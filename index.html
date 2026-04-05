@@ -3,430 +3,369 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toploader Trading Co.</title>
-  <meta name="description" content="Toploader Trading Co. sells Pokémon singles, slabs, sealed product, and buys collections." />
+  <title>Toploader Trading Co. — Pokémon Cards</title>
+  <meta name="description" content="Toploader Trading Co. — Pokémon singles, slabs, sealed product, and collection buying. Find us at card shows across Kentucky and Indiana." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0f1115;
-      --panel: #171a21;
-      --panel-2: #1f2430;
-      --text: #f3f4f6;
-      --muted: #b6bcc8;
-      --accent: #d62828;
-      --border: #2b3240;
-      --max: 1100px;
+      --white: #ffffff;
+      --off-white: #f7f5f2;
+      --light: #edebe7;
+      --mid: #d0cec9;
+      --text: #1a1814;
+      --text-2: #5a5650;
+      --text-3: #9a9690;
+      --accent: #c8102e;
+      --accent-light: #fdf0f2;
+      --accent-mid: #f5c6ce;
+      --border: rgba(26,24,20,0.1);
+      --border-strong: rgba(26,24,20,0.18);
+      --max: 1160px;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--white); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(94%, var(--max)); margin: 0 auto; }
 
-    * { box-sizing: border-box; }
+    /* Announcement bar */
+    .announce { background: var(--accent); color: white; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; overflow: hidden; white-space: nowrap; padding: 9px 0; }
+    .announce-track { display: inline-flex; animation: ticker 30s linear infinite; }
+    .announce-track span { padding: 0 40px; }
+    .announce-track span::after { content: '·'; margin-left: 40px; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #0f1115 0%, #131720 100%);
-      color: var(--text);
-      line-height: 1.6;
+    /* Header */
+    header { background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 200; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand-logo { width: 38px; height: 38px; border-radius: 8px; overflow: hidden; background: var(--light); display: grid; place-items: center; font-family: var(--font-display); font-size: 1rem; color: var(--text-2); flex-shrink: 0; }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-name { font-family: var(--font-display); font-size: 1.45rem; letter-spacing: 0.04em; color: var(--text); line-height: 1; }
+    .nav-links { display: flex; align-items: center; gap: 28px; font-size: 0.88rem; font-weight: 500; color: var(--text-2); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--accent) !important; color: white !important; padding: 9px 18px; border-radius: 6px; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    .nav-cta:hover { opacity: 0.88; }
+
+    /* Hero */
+    .hero { background: var(--off-white); border-bottom: 1px solid var(--border); padding: 64px 0 0; overflow: hidden; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: end; }
+    .hero-text { padding-bottom: 64px; padding-right: 48px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 2px; background: var(--accent); }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(3.5rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: 0.02em; color: var(--text); margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-desc { font-size: 1rem; color: var(--text-2); max-width: 420px; margin-bottom: 32px; line-height: 1.65; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 13px 24px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; letter-spacing: 0.03em; transition: all 0.15s; cursor: pointer; border: 1.5px solid transparent; }
+    .btn-primary { background: var(--text); color: white; border-color: var(--text); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-outline { background: transparent; color: var(--text); border-color: var(--border-strong); }
+    .btn-outline:hover { border-color: var(--text); }
+    .hero-visual { align-self: stretch; position: relative; }
+    .hero-img-wrap { width: 100%; height: 100%; min-height: 420px; background: var(--light); display: grid; place-items: center; color: var(--text-3); font-size: 0.88rem; text-align: center; padding: 24px; overflow: hidden; }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-badge { position: absolute; bottom: 24px; left: -16px; background: white; border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 12px; }
+    .hero-badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #22c55e; flex-shrink: 0; box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+    .hero-badge-text { font-size: 0.82rem; font-weight: 600; line-height: 1.3; }
+    .hero-badge-sub { font-size: 0.75rem; color: var(--text-2); font-weight: 400; }
+
+    /* Trust bar */
+    .trust-bar { border-bottom: 1px solid var(--border); background: var(--white); }
+    .trust-inner { display: flex; justify-content: space-between; padding: 20px 0; gap: 16px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-2); font-weight: 500; }
+    .trust-icon { width: 32px; height: 32px; background: var(--accent-light); border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+    .trust-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Sections */
+    .section { padding: 72px 0; }
+    .section-alt { background: var(--off-white); }
+    .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    .section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+    .section-h { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.5rem); letter-spacing: 0.02em; line-height: 1; margin-bottom: 10px; color: var(--text); }
+    .section-sub { color: var(--text-2); font-size: 0.97rem; max-width: 560px; margin-bottom: 40px; line-height: 1.65; }
+
+    /* Cards grid */
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .poke-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
+    .poke-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.1); transform: translateY(-3px); border-color: var(--mid); }
+    .poke-card-img { width: 100%; aspect-ratio: 3/4; background: var(--light); display: grid; place-items: center; color: var(--text-3); font-size: 0.82rem; text-align: center; overflow: hidden; }
+    .poke-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .poke-card:hover .poke-card-img img { transform: scale(1.03); }
+    .poke-card-body { padding: 14px 16px 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .poke-card-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .poke-card-price { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent); letter-spacing: 0.02em; }
+    .featured-footer { margin-top: 28px; color: var(--text-2); font-size: 0.88rem; }
+    .featured-footer a { color: var(--text); font-weight: 600; border-bottom: 1px solid var(--border-strong); }
+    .featured-footer a:hover { border-color: var(--text); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .about-block { background: var(--white); padding: 36px 28px; }
+    .about-num { font-family: var(--font-display); font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .about-label { font-weight: 600; font-size: 0.95rem; margin-bottom: 6px; }
+    .about-desc { color: var(--text-2); font-size: 0.87rem; line-height: 1.6; }
+
+    /* Shows */
+    .shows-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+    .show-list { list-style: none; }
+    .show-row { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .show-row:first-child { border-top: 1px solid var(--border); }
+    .show-date-box { width: 52px; height: 52px; border: 1.5px solid var(--accent); border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; }
+    .show-month { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+    .show-day { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); letter-spacing: 0.02em; }
+    .show-info { flex: 1; }
+    .show-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .show-location { color: var(--text-2); font-size: 0.83rem; }
+    .show-tag { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); border: 1px solid var(--accent-mid); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+    .social-panel { background: var(--text); border-radius: 14px; padding: 32px 28px; color: white; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
+    .social-panel h3 { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 12px; }
+    .social-panel p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 24px; }
+    .social-btns { display: flex; flex-direction: column; gap: 10px; }
+    .social-link { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 12px 16px; color: white; font-weight: 600; font-size: 0.88rem; transition: background 0.15s; }
+    .social-link:hover { background: rgba(255,255,255,0.14); }
+    .social-link-arrow { opacity: 0.5; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .contact-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 28px 30px; }
+    .contact-card h3 { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: 0.03em; margin-bottom: 16px; }
+    .email-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .email-item { display: flex; flex-direction: column; gap: 2px; }
+    .email-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); }
+    .email-addr { font-size: 0.9rem; font-weight: 500; color: var(--accent); border-bottom: 1px solid transparent; }
+    .email-addr:hover { border-color: var(--accent); }
+    .payment-section { margin-top: 24px; }
+    .payment-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-3); margin-bottom: 10px; }
+    .payment-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { background: var(--white); border: 1.5px solid var(--border-strong); padding: 7px 16px; border-radius: 999px; font-size: 0.83rem; font-weight: 600; color: var(--text); }
+
+    /* Footer */
+    footer { background: var(--text); color: rgba(255,255,255,0.5); padding: 36px 0; font-size: 0.85rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-brand { font-family: var(--font-display); font-size: 1.3rem; letter-spacing: 0.04em; color: white; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: rgba(255,255,255,0.5); transition: color 0.15s; }
+    .footer-links a:hover { color: white; }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .hero-inner, .shows-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-text { padding-right: 0; padding-bottom: 40px; }
+      .hero-visual { min-height: 300px; }
+      .hero-badge { left: 16px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 16px; }
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(92%, var(--max));
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(10px);
-      background: rgba(15, 17, 21, 0.88);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .hero {
-      padding: 72px 0 52px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      background: rgba(214, 40, 40, 0.12);
-      border: 1px solid rgba(214, 40, 40, 0.35);
-      color: #ffd5d5;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.88rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 4.5rem);
-      line-height: 1.05;
-      margin: 0 0 16px;
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.08rem;
-      max-width: 650px;
-      margin: 0 0 24px;
-    }
-
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 18px;
-      border-radius: 14px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      transition: 0.2s ease;
-    }
-
-    .button.primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: white;
-    }
-
-    .button.secondary {
-      background: var(--panel);
-      color: var(--text);
-    }
-
-    .button:hover {
-      transform: translateY(-1px);
-      opacity: 0.96;
-    }
-
-    .quick-links {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .quick-links a {
-      color: var(--text);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-    }
-
-    .showcase {
-      display: grid;
-      gap: 14px;
-    }
-
-    .photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: var(--panel-2);
-      display: grid;
-      place-items: center;
-      color: var(--muted);
-      text-align: center;
-      padding: 16px;
-      overflow: hidden;
-    }
-
-    .photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    section {
-      padding: 24px 0 56px;
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      margin: 0 0 10px;
-    }
-
-    .section-subtitle {
-      color: var(--muted);
-      margin: 0 0 24px;
-      max-width: 720px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .info-card h3 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 1.15rem;
-    }
-
-    .info-card p,
-    .info-card ul {
-      color: var(--muted);
-      margin: 0;
-    }
-
-    .info-card ul {
-      padding-left: 18px;
-    }
-
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .social {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 10px 14px;
-      border-radius: 999px;
-      color: var(--text);
-    }
-
-    footer {
-      padding: 30px 0 50px;
-      color: var(--muted);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      margin-top: 20px;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        flex-wrap: wrap;
-      }
-
-      .hero {
-        padding-top: 48px;
-      }
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 3rem; }
+      .hero-badge { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="brand-logo">
-          <!-- Replace logo.png with your actual logo file -->
-          <img src="logo.png" alt="Toploader Trading Co. logo" onerror="this.style.display='none'; this.parentNode.textContent='TT';" />
-        </div>
-        <span>Toploader Trading Co.</span>
-      </div>
 
+  <div class="announce" aria-label="Announcements">
+    <div class="announce-track">
+      <span>Now vending at regional card shows</span>
+      <span>Pokémon singles · slabs · sealed product</span>
+      <span>We buy collections — DM us for an offer</span>
+      <span>Find us at shows across KY &amp; IN</span>
+      <span>Now vending at regional card shows</span>
+      <span>Pokémon singles · slabs · sealed product</span>
+      <span>We buy collections — DM us for an offer</span>
+      <span>Find us at shows across KY &amp; IN</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <div class="brand-logo">
+          <img src="logo.png" alt="Toploader Trading Co." onerror="this.style.display='none'; this.parentNode.textContent='TT';" />
+        </div>
+        <span class="brand-name">Toploader Trading Co.</span>
+      </a>
       <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#find-us">Find Us</a>
+        <a href="#featured">Featured</a>
+        <a href="#shows">Shows</a>
         <a href="#contact">Contact</a>
+        <a class="nav-cta" href="mailto:info@toploadertrading.com">Get in Touch</a>
       </nav>
     </div>
   </header>
 
   <main>
+
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Pokémon singles, slabs, sealed, and collections</div>
-          <h1>Buy, sell, trade, and connect with Toploader Trading Co.</h1>
-          <p>
-            We specialize in Pokémon singles, slabs, sealed product, and collection buying. Find us at regional card shows, online, and through direct messages for inventory questions, collection offers, and want lists.
-          </p>
-
-          <div class="cta-row">
-            <a class="button primary" href="mailto:hello@toploadertrading.com">Email Us</a>
-            <a class="button secondary" href="#find-us">See Where to Find Us</a>
-          </div>
-
-          <div class="quick-links">
-            Domain: <a href="https://toploadertrading.com">toploadertrading.com</a>
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <div class="hero-eyebrow">Pokémon cards · KY &amp; IN shows</div>
+          <h1>Buy.<br/>Sell.<br/><em>Trade.</em></h1>
+          <p class="hero-desc">Toploader Trading Co. specializes in Pokémon singles, graded slabs, and sealed product. Find us at regional card shows or reach out anytime — we also buy collections.</p>
+          <div class="hero-btns">
+            <a class="btn btn-primary" href="#shows">Upcoming Shows</a>
+            <a class="btn btn-outline" href="#featured">Featured Cards</a>
           </div>
         </div>
-
-        <div class="card showcase">
-          <div class="photo">
-            <!-- Replace with an actual inventory or table photo -->
-            <img src="show-photo-1.jpg" alt="Toploader Trading Co. inventory display" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a clean booth or inventory photo here';" />
+        <div class="hero-visual">
+          <div class="hero-img-wrap">
+            <img src="show-photo-1.jpg" alt="Toploader Trading Co. booth" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a booth or inventory photo here';" />
           </div>
-          <div class="grid-2">
-            <div class="photo">
-              <img src="show-photo-2.jpg" alt="Pokémon cards for sale" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a binder or showcase card photo';" />
-            </div>
-            <div class="photo">
-              <img src="show-photo-3.jpg" alt="Card show setup" onerror="this.style.display='none'; this.parentNode.innerHTML='Add a table setup or sealed product photo';" />
+          <div class="hero-badge">
+            <div class="hero-badge-dot"></div>
+            <div>
+              <div class="hero-badge-text">Accepting collections</div>
+              <div class="hero-badge-sub">DM us for an offer</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">What we do</h2>
-        <p class="section-subtitle">
-          Toploader Trading Co. focuses on Pokémon cards with a practical approach to buying and selling. Whether you are looking for singles, slabs, sealed product, or a fair conversation about moving a collection, we aim to keep it straightforward.
-        </p>
+    <div class="trust-bar">
+      <div class="container trust-inner">
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          Fair, transparent pricing
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          Fresh inventory every show
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          We buy collections of all sizes
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          Cash · Venmo · CashApp · PayPal
+        </div>
+      </div>
+    </div>
 
-        <div class="grid-3">
-          <div class="card info-card">
-            <h3>Inventory</h3>
-            <p>Pokémon singles, slabs, sealed product, and rotating show inventory.</p>
-          </div>
-          <div class="card info-card">
-            <h3>Collections</h3>
-            <p>We also look at collections and can talk through condition, value ranges, and what to expect.</p>
-          </div>
-          <div class="card info-card">
-            <h3>Shows</h3>
-            <p>Catch us at local and regional card shows with fresh inventory and trade options.</p>
-          </div>
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-label">Featured inventory</div>
+        <h2 class="section-h">Cards at the next show</h2>
+        <p class="section-sub">A selection of what we're bringing. DM us on Instagram or Facebook to ask about anything or put a card on hold.</p>
+        <div class="cards-grid">
+          <div class="poke-card"><div class="poke-card-img"><img src="card-1.jpg" alt="Card 1" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+          <div class="poke-card"><div class="poke-card-img"><img src="card-2.jpg" alt="Card 2" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+          <div class="poke-card"><div class="poke-card-img"><img src="card-3.jpg" alt="Card 3" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+          <div class="poke-card"><div class="poke-card-img"><img src="card-4.jpg" alt="Card 4" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+          <div class="poke-card"><div class="poke-card-img"><img src="card-5.jpg" alt="Card 5" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+          <div class="poke-card"><div class="poke-card-img"><img src="card-6.jpg" alt="Card 6" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div><div class="poke-card-body"><div class="poke-card-name">Card Name Here</div><div class="poke-card-price">$00</div></div></div>
+        </div>
+        <p class="featured-footer">Inventory rotates before every show. Follow us on <a href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a> and <a href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a> for the latest additions.</p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-label">What we do</div>
+        <h2 class="section-h">The hobby, done right</h2>
+        <p class="section-sub">Fair prices, straight talk, and a genuine love for Pokémon cards. We started from a personal collection and grew from there.</p>
+        <div class="about-grid">
+          <div class="about-block"><div class="about-num">01</div><div class="about-label">Singles &amp; slabs</div><div class="about-desc">Raw singles and PSA/BGS graded slabs from sets old and new. We know the market and price accordingly.</div></div>
+          <div class="about-block"><div class="about-num">02</div><div class="about-label">Sealed product</div><div class="about-desc">Booster packs, ETBs, and sealed sets at competitive show pricing. Stock rotates with every event.</div></div>
+          <div class="about-block"><div class="about-num">03</div><div class="about-label">We buy collections</div><div class="about-desc">Looking to sell? We buy collections of all sizes. Send us photos and we'll give you a straight answer on value.</div></div>
         </div>
       </div>
     </section>
 
-    <section id="find-us">
+    <section class="section" id="shows">
       <div class="container">
-        <h2 class="section-title">Where to find us</h2>
-        <p class="section-subtitle">
-          Update this section with your next show dates, cities, and any regular events where people can expect to see you.
-        </p>
-
-        <div class="grid-2">
-          <div class="card info-card">
-            <h3>Upcoming shows</h3>
-            <ul>
-              <li>Owensboro Card Show | April 25th</li>
-              <li>Evansville Armory Card Show | May 1st & 2nd</li>
-              <li>Western Kentucky Collectibles Show | May 16th</li>
+        <div class="section-label">Find us</div>
+        <h2 class="section-h">Upcoming shows</h2>
+        <p class="section-sub">We vend at card shows across Kentucky and Indiana. Come find the table, say hello, and dig through the binders.</p>
+        <div class="shows-grid">
+          <div>
+            <ul class="show-list">
+              <li class="show-row">
+                <div class="show-date-box"><div class="show-month">Apr</div><div class="show-day">25</div></div>
+                <div class="show-info"><div class="show-name">Owensboro Card Show</div><div class="show-location">Owensboro, KY</div></div>
+                <div class="show-tag">Upcoming</div>
+              </li>
+              <li class="show-row">
+                <div class="show-date-box"><div class="show-month">May</div><div class="show-day">1</div></div>
+                <div class="show-info"><div class="show-name">Evansville Armory Card Show</div><div class="show-location">Evansville, IN · May 1–2</div></div>
+                <div class="show-tag">Upcoming</div>
+              </li>
+              <li class="show-row">
+                <div class="show-date-box"><div class="show-month">May</div><div class="show-day">16</div></div>
+                <div class="show-info"><div class="show-name">Western Kentucky Collectibles Show</div><div class="show-location">Western KY</div></div>
+                <div class="show-tag">Upcoming</div>
+              </li>
             </ul>
           </div>
-
-          <div class="card info-card">
-            <h3>Online</h3>
-            <p>Use your social pages to post inventory, show previews, sold items, and collection buying updates.</p>
-            <div class="socials">
-              <a class="social" href="#">Facebook</a>
-              <a class="social" href="#">Instagram</a>
-              <a class="social" href="#">TikTok</a>
+          <div class="social-panel">
+            <div>
+              <h3>Stay in the loop</h3>
+              <p>We post show previews, new inventory drops, and updates before every event. Follow us so you know what's coming to the table.</p>
+            </div>
+            <div class="social-btns">
+              <a class="social-link" href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener"><span>Instagram · @toploadertrading</span><span class="social-link-arrow">↗</span></a>
+              <a class="social-link" href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook · Toploader Trading Co.</span><span class="social-link-arrow">↗</span></a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="section section-alt" id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">
-          Want to ask about inventory, a collection, or where we will be next? Reach out below.
-        </p>
-
-        <div class="card info-card">
-          <h3>Email</h3>
-          <p><a href="mailto:hello@toploadertrading.com">hello@toploadertrading.com</a></p>
-          <br />
-          <h3>Suggested contact uses</h3>
-          <ul>
-            <li>Collection inquiries</li>
-            <li>Inventory questions</li>
-            <li>Show and event inquiries</li>
-            <li>Want lists</li>
-          </ul>
+        <div class="section-label">Get in touch</div>
+        <h2 class="section-h">We're easy to reach</h2>
+        <p class="section-sub">Collection offers, inventory questions, want lists, show inquiries — reach out through any of the channels below.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Email us</h3>
+            <ul class="email-list">
+              <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="mailto:info@toploadertrading.com">info@toploadertrading.com</a></li>
+              <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="mailto:elijah@toploadertrading.com">elijah@toploadertrading.com</a></li>
+              <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="mailto:brynn@toploadertrading.com">brynn@toploadertrading.com</a></li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <h3>At shows</h3>
+            <p style="color:var(--text-2);font-size:0.9rem;margin-bottom:20px;line-height:1.65;">The fastest way to ask about a specific card or make an offer on a collection is a direct message on Instagram or Facebook. We're responsive.</p>
+            <div class="payment-section">
+              <div class="payment-label">Payment accepted at shows</div>
+              <div class="payment-pills">
+                <span class="pill">Cash</span>
+                <span class="pill">Venmo</span>
+                <span class="pill">CashApp</span>
+                <span class="pill">PayPal</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> Toploader Trading Co. All rights reserved.
+    <div class="container footer-inner">
+      <span class="footer-brand">Toploader Trading Co.</span>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
+        <a href="mailto:info@toploadertrading.com">Email</a>
+      </div>
+      <span>© <span id="year"></span> Toploader Trading Co.</span>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
