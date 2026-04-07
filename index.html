@@ -176,6 +176,44 @@
     .social-link:hover{background:rgba(255,255,255,.14)}
     .social-link-arrow{opacity:.5}
 
+    /* Payment section */
+    .payment-section-outer{background:var(--black);border-top:1px solid var(--black-border);border-bottom:1px solid var(--black-border)}
+    .payment-intro{text-align:center;max-width:480px;margin:0 auto 40px}
+    .payment-intro .section-label{justify-content:center}
+    .payment-intro .section-h{color:white}
+    .payment-intro .section-sub{color:rgba(255,255,255,.5);margin:0 auto}
+    .payment-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .payment-card{background:var(--black-2);border:1px solid var(--black-border);border-radius:14px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;text-decoration:none;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+    .payment-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .2s}
+    .payment-card:hover{transform:translateY(-3px)}
+    .payment-card.venmo{border-color:rgba(0,130,189,0.25)}
+    .payment-card.venmo::before{background:radial-gradient(circle at 50% 0%,rgba(0,130,189,0.08),transparent 70%)}
+    .payment-card.venmo:hover{border-color:rgba(0,130,189,0.5)}
+    .payment-card.venmo::before,.payment-card.venmo:hover::before{opacity:1}
+    .payment-card.cashapp{border-color:rgba(0,212,57,0.2)}
+    .payment-card.cashapp::before{background:radial-gradient(circle at 50% 0%,rgba(0,212,57,0.07),transparent 70%)}
+    .payment-card.cashapp:hover{border-color:rgba(0,212,57,0.45)}
+    .payment-card.cashapp::before,.payment-card.cashapp:hover::before{opacity:1}
+    .payment-card.paypal{border-color:rgba(0,112,186,0.25)}
+    .payment-card.paypal::before{background:radial-gradient(circle at 50% 0%,rgba(0,112,186,0.08),transparent 70%)}
+    .payment-card.paypal:hover{border-color:rgba(0,112,186,0.5)}
+    .payment-card.paypal::before,.payment-card.paypal:hover::before{opacity:1}
+    .payment-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;position:relative;z-index:1}
+    .payment-icon.vi{background:rgba(0,130,189,0.15)}
+    .payment-icon.ci{background:rgba(0,212,57,0.12)}
+    .payment-icon.pi{background:rgba(0,112,186,0.15)}
+    .payment-icon svg{width:26px;height:26px}
+    .payment-card-name{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.04em;color:white;position:relative;z-index:1}
+    .payment-card-handle{font-size:.82rem;color:rgba(255,255,255,.4);position:relative;z-index:1;font-weight:500}
+    .payment-card-btn{margin-top:4px;padding:9px 20px;border-radius:6px;font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;position:relative;z-index:1;transition:opacity .15s}
+    .payment-card-btn:hover{opacity:.85}
+    .payment-card.venmo .payment-card-btn{background:rgba(0,130,189,0.18);color:#5bc8f5;border:1px solid rgba(0,130,189,0.3)}
+    .payment-card.cashapp .payment-card-btn{background:rgba(0,212,57,0.12);color:#00d439;border:1px solid rgba(0,212,57,0.25)}
+    .payment-card.paypal .payment-card-btn{background:rgba(0,112,186,0.15);color:#5fa8d3;border:1px solid rgba(0,112,186,0.28)}
+    .payment-note{text-align:center;margin-top:28px;font-size:.82rem;color:rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;gap:8px}
+    .payment-note::before,.payment-note::after{content:'';display:block;height:1px;width:40px;background:rgba(255,255,255,.1)}
+    @media(max-width:600px){.payment-cards{grid-template-columns:1fr}}
+
     /* Contact */
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
     .contact-card{background:var(--off-white);border:1px solid var(--border);border-radius:14px;padding:28px 30px}
@@ -263,6 +301,7 @@
       <nav class="nav-links">
         <a class="nav-text-link" href="#featured">Featured</a>
         <a class="nav-text-link" href="#shows">Shows</a>
+        <a class="nav-text-link" href="#pay">Pay</a>
         <a class="nav-text-link" href="#contact">Contact</a>
         <a class="nav-cta" href="#" onclick="openPhone();return false;">Get in Touch</a>
       </nav>
@@ -273,6 +312,7 @@
     <nav class="mobile-nav" id="mobile-nav">
       <a href="#featured" onclick="closeMobileNav()">Featured</a>
       <a href="#shows" onclick="closeMobileNav()">Shows</a>
+      <a href="#pay" onclick="closeMobileNav()">Pay</a>
       <a href="#contact" onclick="closeMobileNav()">Contact</a>
       <a class="mob-cta" href="#" onclick="closeMobileNav();openPhone();return false;">Call / Text Us — (270) 883-0151</a>
     </nav>
@@ -349,7 +389,7 @@
             </div>
             <div class="poke-card">
               <div class="poke-card-img"><img src="card-4.jpg" alt="Card 4" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div>
-              <div class="poke-card-body"><div class="poke-card-name">Team Rocket's Nidoking EX 233</div><div class="poke-card-price">$98</div></div>
+              <div class="poke-card-body"><div class="poke-card-name">Ascended Heroes ETB</div><div class="poke-card-price">$130</div></div>
             </div>
             <div class="poke-card">
               <div class="poke-card-img"><img src="card-5.jpg" alt="Card 5" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div>
@@ -436,6 +476,56 @@
       </div>
     </section>
 
+    <section class="section payment-section-outer" id="pay">
+      <div class="container">
+        <div class="payment-intro">
+          <div class="section-label">Pay online</div>
+          <h2 class="section-h">Send payment anytime</h2>
+          <p class="section-sub">Paying for a hold, a collection offer, or a card from a show? Use any of the links below — all are instant and secure.</p>
+        </div>
+        <div class="payment-cards">
+
+          <a class="payment-card venmo" href="https://venmo.com/u/Elijah-Eckstein" target="_blank" rel="noopener">
+            <div class="payment-icon vi">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.5 3C20.1 4.2 20.4 5.4 20.4 7C20.4 11.6 16.5 17.6 13.4 21H6.6L3.6 3.8L9.9 3.2L11.4 14.2C12.9 11.7 14.7 7.8 14.7 5.2C14.7 3.8 14.4 2.8 14 2L19.5 3Z" fill="#008ABD"/>
+              </svg>
+            </div>
+            <div class="payment-card-name">Venmo</div>
+            <div class="payment-card-handle">@Elijah-Eckstein</div>
+            <div class="payment-card-btn">Pay with Venmo ↗</div>
+          </a>
+
+          <a class="payment-card cashapp" href="https://cash.app/$ElijahEcks" target="_blank" rel="noopener">
+            <div class="payment-icon ci">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="6" fill="transparent"/>
+                <path d="M13.5 7.5C13.1 7.3 12.6 7.1 12 7C10.3 7 9 7.9 9 9.2C9 10.3 9.9 11 11.4 11.5C12.9 12 13.5 12.5 13.5 13.3C13.5 14.2 12.6 14.8 11.4 14.8C10.2 14.8 9.1 14.4 8.4 13.8L7.5 15.3C8.4 16 9.6 16.5 11 16.6V18H13V16.5C14.9 16.2 16.1 15 16.1 13.3C16.1 11.8 15.1 11 13.5 10.4C12.1 9.9 11.5 9.5 11.5 8.8C11.5 8.1 12.1 7.7 13 7.7C13.8 7.7 14.6 8 15.2 8.5L16.1 7C15.3 6.4 14.3 6 13 5.9V4.5H11V6C9.3 6.4 8.3 7.5 8.3 9C8.3 10.5 9.3 11.4 11 12L11.5 12.2V12.2C12.8 12.7 13.4 13.1 13.4 13.8C13.4 14.5 12.7 15 11.6 15C10.5 15 9.4 14.5 8.7 13.8L7.8 15.4C8.7 16.2 9.9 16.7 11.3 16.8V18.3H13.3V16.8C14.9 16.5 16 15.4 16 13.8C16 12.3 15 11.3 13.5 10.7V7.5Z" fill="#00D439"/>
+              </svg>
+            </div>
+            <div class="payment-card-name">Cash App</div>
+            <div class="payment-card-handle">$ElijahEcks</div>
+            <div class="payment-card-btn">Pay with Cash App ↗</div>
+          </a>
+
+          <a class="payment-card paypal" href="https://paypal.me/ElijahEckstein" target="_blank" rel="noopener">
+            <div class="payment-icon pi">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.5 8.5C19.5 11.5 17.2 14 14 14H12L11 19H8L7 9.5H12C14 9.5 15.5 8.5 16 7C17.5 7 18.8 7.5 19.2 8.5H19.5Z" fill="#009CDE"/>
+                <path d="M17 6.5C17 9.5 14.7 12 11.5 12H9.5L8.5 17H5.5L4.5 7.5H9.5C11.5 7.5 13 6.5 13.5 5C15 5 16.3 5.5 16.7 6.5H17Z" fill="#012169"/>
+                <path d="M14.5 5C14.5 7.8 12.2 10 9.2 10H7.2L6.5 14.5H4L3 6H8C9.8 6 11.2 5.2 11.8 4C13.1 4.1 14.2 4.4 14.5 5Z" fill="#003087"/>
+              </svg>
+            </div>
+            <div class="payment-card-name">PayPal</div>
+            <div class="payment-card-handle">paypal.me/ElijahEckstein</div>
+            <div class="payment-card-btn">Pay with PayPal ↗</div>
+          </a>
+
+        </div>
+        <div class="payment-note">Cash also accepted at all shows</div>
+      </div>
+    </section>
+
     <section class="section section-alt" id="contact">
       <div class="container">
         <div class="section-label">Get in touch</div>
@@ -445,9 +535,9 @@
           <div class="contact-card">
             <h3>Email us</h3>
             <ul class="email-list">
-              <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="mailto:info@toploadertrading.com">info@toploadertrading.com</a></li>
-              <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="mailto:elijah@toploadertrading.com">elijah@toploadertrading.com</a></li>
-              <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="mailto:brynn@toploadertrading.com">brynn@toploadertrading.com</a></li>
+              <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="/cdn-cgi/l/email-protection#7b12151d143b0f140b17141a1f1e090f091a1f12151c55181416"><span class="__cf_email__" data-cfemail="7e171018113e0a110e12111f1a1b0c0a0c1f1a171019501d1113">[email&#160;protected]</span></a></li>
+              <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="/cdn-cgi/l/email-protection#11747d787b707951657e617d7e7075746365637075787f763f727e7c"><span class="__cf_email__" data-cfemail="95f0f9fcfff4fdd5e1fae5f9faf4f1f0e7e1e7f4f1fcfbf2bbf6faf8">[email&#160;protected]</span></a></li>
+              <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="/cdn-cgi/l/email-protection#95f7e7ecfbfbd5e1fae5f9faf4f1f0e7e1e7f4f1fcfbf2bbf6faf8"><span class="__cf_email__" data-cfemail="0567777c6b6b45716a75696a64616077717764616c6b622b666a68">[email&#160;protected]</span></a></li>
             </ul>
           </div>
           <div class="contact-card">
@@ -475,13 +565,13 @@
       <div class="footer-links">
         <a href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="mailto:info@toploadertrading.com">Email</a>
+        <a href="/cdn-cgi/l/email-protection#f0999e969fb0849f809c9f9194958284829194999e97de939f9d">Email</a>
       </div>
       <span>&copy; <span id="year"></span> Toploader Trading Co.</span>
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
     function openPhone(){
