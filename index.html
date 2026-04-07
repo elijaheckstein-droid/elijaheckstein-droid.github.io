@@ -31,7 +31,7 @@
     .announce{background:var(--accent);color:white;font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap;padding:9px 0}
     .announce-track{display:inline-flex;animation:ticker 30s linear infinite}
     .announce-track span{padding:0 40px}
-    .announce-track span::after{content:'·';margin-left:75px}
+    .announce-track span::after{content:'·';margin-left:40px}
     @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* Header */
@@ -43,8 +43,42 @@
     .brand-name{font-family:var(--font-display);font-size:1.45rem;letter-spacing:.04em;color:white;line-height:1}
     .nav-links{display:flex;align-items:center;gap:28px;font-size:.88rem;font-weight:500;color:rgba(255,255,255,.5)}
     .nav-links a:hover{color:white}
-    .nav-cta{background:var(--accent)!important;color:white!important;padding:9px 18px;border-radius:6px;font-weight:600;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase}
-    .nav-cta:hover{opacity:.88}
+
+    /* CTA button — softer, no uppercase */
+    .nav-cta{background:var(--accent)!important;color:white!important;padding:9px 18px;border-radius:6px;font-weight:600;font-size:.85rem;letter-spacing:.01em;transition:opacity .15s}
+    .nav-cta:hover{opacity:.88;color:white!important}
+
+    /* Hamburger */
+    .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;cursor:pointer;padding:6px;border:1px solid var(--black-border);border-radius:6px;background:transparent;flex-shrink:0}
+    .nav-hamburger span{display:block;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .2s}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .nav-hamburger.open span:nth-child(2){opacity:0}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+    /* Mobile nav drawer */
+    .mobile-nav{display:none;flex-direction:column;gap:0;background:var(--black-2);border-top:1px solid var(--black-border);padding:8px 0 16px}
+    .mobile-nav a{padding:14px 20px;font-size:.95rem;font-weight:500;color:rgba(255,255,255,.6);border-bottom:1px solid var(--black-border);display:block}
+    .mobile-nav a:last-child{border-bottom:none}
+    .mobile-nav a:hover{color:white;background:rgba(255,255,255,.04)}
+    .mobile-nav .mob-cta{color:var(--accent)!important;font-weight:700}
+    .mobile-nav.open{display:flex}
+
+    /* Phone popup overlay */
+    .phone-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:500;align-items:center;justify-content:center;padding:20px}
+    .phone-overlay.open{display:flex}
+    .phone-popup{background:var(--black-2);border:1px solid var(--black-border);border-radius:16px;padding:32px 28px;width:100%;max-width:340px;text-align:center}
+    .phone-popup-logo{font-family:var(--font-display);font-size:1.2rem;letter-spacing:.04em;color:white;margin-bottom:6px}
+    .phone-popup-logo span{color:var(--accent)}
+    .phone-popup-label{font-size:.78rem;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+    .phone-popup-number{font-family:var(--font-display);font-size:2.2rem;color:white;letter-spacing:.04em;margin-bottom:8px}
+    .phone-popup-sub{font-size:.83rem;color:rgba(255,255,255,.45);margin-bottom:28px}
+    .phone-popup-btns{display:flex;gap:10px}
+    .phone-popup-btns a{flex:1;padding:13px 0;border-radius:8px;font-weight:600;font-size:.88rem;text-align:center;transition:opacity .15s}
+    .phone-popup-btns a:hover{opacity:.88}
+    .popup-call{background:var(--accent);color:white}
+    .popup-text{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:white}
+    .phone-popup-close{margin-top:16px;font-size:.8rem;color:rgba(255,255,255,.3);cursor:pointer;letter-spacing:.04em}
+    .phone-popup-close:hover{color:rgba(255,255,255,.6)}
 
     /* Hero */
     .hero{background:var(--off-white);border-bottom:1px solid var(--border);padding:64px 0 0;overflow:hidden}
@@ -92,17 +126,7 @@
     /* Carousel */
     .carousel-wrap{position:relative;width:100%;overflow:hidden;padding:32px 0 48px}
     .carousel-track{position:relative;display:flex;align-items:center;justify-content:center;height:480px}
-    .poke-card{
-      position:absolute;
-      width:260px;
-      background:var(--black-3);
-      border:1px solid var(--black-border);
-      border-radius:14px;
-      overflow:hidden;
-      transition:transform .45s cubic-bezier(.4,0,.2,1),opacity .45s ease,box-shadow .45s ease,border-color .45s ease;
-      cursor:pointer;
-      user-select:none;
-    }
+    .poke-card{position:absolute;width:260px;background:var(--black-3);border:1px solid var(--black-border);border-radius:14px;overflow:hidden;transition:transform .45s cubic-bezier(.4,0,.2,1),opacity .45s ease,box-shadow .45s ease,border-color .45s ease;cursor:pointer;user-select:none}
     .poke-card[data-pos="center"]{transform:translateX(0) scale(1);opacity:1;z-index:10;border-color:rgba(255,255,255,.2);box-shadow:0 24px 64px rgba(0,0,0,.7);cursor:default}
     .poke-card[data-pos="left"]{transform:translateX(-295px) scale(0.8);opacity:.5;z-index:5}
     .poke-card[data-pos="right"]{transform:translateX(295px) scale(0.8);opacity:.5;z-index:5}
@@ -122,7 +146,6 @@
     .carousel-dots{display:flex;gap:8px;align-items:center}
     .carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);transition:background .2s,transform .2s;cursor:pointer}
     .carousel-dot.active{background:var(--accent);transform:scale(1.4)}
-
     .featured-footer{margin-top:28px;color:rgba(255,255,255,.45);font-size:.88rem}
     .featured-footer a{color:rgba(255,255,255,.85);font-weight:600;border-bottom:1px solid rgba(255,255,255,.2)}
     .featured-footer a:hover{border-color:white;color:white}
@@ -187,7 +210,9 @@
       .poke-card[data-pos="right"]{transform:translateX(220px) scale(0.8);opacity:.4}
     }
     @media(max-width:600px){
-      .nav-links{display:none}
+      /* Hide text nav links but keep hamburger + CTA visible */
+      .nav-links .nav-text-link{display:none}
+      .nav-hamburger{display:flex}
       .hero h1{font-size:3rem}
       .hero-badge{display:none}
       .carousel-track{height:400px}
@@ -198,6 +223,21 @@
   </style>
 </head>
 <body>
+
+  <!-- Phone popup overlay -->
+  <div class="phone-overlay" id="phone-overlay" onclick="closePhone(event)">
+    <div class="phone-popup">
+      <div class="phone-popup-logo">TOPLOADER <span>TRADING CO.</span></div>
+      <div class="phone-popup-label">Call or text us anytime</div>
+      <div class="phone-popup-number">(270) 883-0151</div>
+      <div class="phone-popup-sub">We're happy to answer questions about inventory,<br>collections, or upcoming shows.</div>
+      <div class="phone-popup-btns">
+        <a class="popup-call" href="tel:+12708830151">Call</a>
+        <a class="popup-text" href="sms:+12708830151">Text</a>
+      </div>
+      <div class="phone-popup-close" onclick="document.getElementById('phone-overlay').classList.remove('open')">Dismiss</div>
+    </div>
+  </div>
 
   <div class="announce">
     <div class="announce-track">
@@ -221,12 +261,21 @@
         <span class="brand-name">Toploader Trading Co.</span>
       </a>
       <nav class="nav-links">
-        <a href="#featured">Featured</a>
-        <a href="#shows">Shows</a>
-        <a href="#contact">Contact</a>
-        <a class="nav-cta" href="tel:+1‪2708830151" onclick="alert('📞 Call or text us at ‪(270) 883-0151'); return false;">Get in Touch</a>
+        <a class="nav-text-link" href="#featured">Featured</a>
+        <a class="nav-text-link" href="#shows">Shows</a>
+        <a class="nav-text-link" href="#contact">Contact</a>
+        <a class="nav-cta" href="#" onclick="openPhone();return false;">Get in Touch</a>
       </nav>
+      <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+    <nav class="mobile-nav" id="mobile-nav">
+      <a href="#featured" onclick="closeMobileNav()">Featured</a>
+      <a href="#shows" onclick="closeMobileNav()">Shows</a>
+      <a href="#contact" onclick="closeMobileNav()">Contact</a>
+      <a class="mob-cta" href="#" onclick="closeMobileNav();openPhone();return false;">Call / Text Us — (270) 883-0151</a>
+    </nav>
   </header>
 
   <main>
@@ -434,6 +483,25 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openPhone(){
+      document.getElementById('phone-overlay').classList.add('open');
+    }
+    function closePhone(e){
+      if(e.target === document.getElementById('phone-overlay')){
+        document.getElementById('phone-overlay').classList.remove('open');
+      }
+    }
+    function toggleMenu(){
+      var nav = document.getElementById('mobile-nav');
+      var btn = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+    function closeMobileNav(){
+      document.getElementById('mobile-nav').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+    }
 
     (function(){
       const cards = Array.from(document.querySelectorAll('.poke-card'));
