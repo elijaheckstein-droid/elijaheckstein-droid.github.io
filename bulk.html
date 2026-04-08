@@ -160,7 +160,7 @@
             <div class="result-total" id="result-total">$<span>0.00</span></div>
             <div class="result-range" id="result-range">Enter your card counts above</div>
             <br/>
-            <a class="result-cta" href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbeff4ebf7f4fafffee9efe9fafff2f5fcb5f8f4f6a4e8eef9f1fef8efa6d9eef7f0bbd8f4f7f7fef8eff2f4f5bbd4fdfdfee9bbc9feeaeefee8ef">Email us your collection →</a>
+            <a class="result-cta" id="email-cta" href="mailto:info@toploadertrading.com" onclick="updateEmailLink()">Email us your collection →</a>
             <a class="result-cta-2" href="index.html#contact">View all contact options</a>
             <div class="result-note">This estimate is a guide only. Final offer confirmed after we review your collection in person or by photos.</div>
           </div>
@@ -175,6 +175,12 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    var cardLabels = [
+      'EX / GX / V / VMAX / ex Cards',
+      'Full Art Cards',
+      'Commons, Uncommons & Trainers'
+    ];
+
     function calcTotal(){
       var inputs = document.querySelectorAll('.ct-input');
       var total = 0;
@@ -203,6 +209,36 @@
       } else {
         range.textContent = 'Enter your card counts above';
       }
+      updateEmailLink();
+    }
+
+    function updateEmailLink(){
+      var inputs = document.querySelectorAll('.ct-input');
+      var total = 0;
+      var lines = [];
+      inputs.forEach(function(inp, i){
+        var qty = parseFloat(inp.value) || 0;
+        var rate = parseFloat(inp.dataset.rate) || 0;
+        var lineVal = qty * rate;
+        total += lineVal;
+        if(qty > 0){
+          lines.push(cardLabels[i] + ': ' + qty + ' cards @ $' + rate.toFixed(2) + ' ea = $' + lineVal.toFixed(2));
+        }
+      });
+
+      var subject = 'Bulk Collection Estimate — Toploader Trading Co.';
+      var body;
+      if(lines.length === 0){
+        body = 'Hi! I\'d like to sell my Pokémon card collection. Please get in touch to discuss.';
+      } else {
+        body = 'Hi! Here\'s my bulk card estimate from your website:\n\n'
+          + lines.join('\n')
+          + '\n\nEstimated Total: $' + total.toFixed(2)
+          + '\n\nPlease get in touch to arrange a time. Thanks!';
+      }
+
+      document.getElementById('email-cta').href =
+        'mailto:info@toploadertrading.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
     }
   </script>
 </body>
