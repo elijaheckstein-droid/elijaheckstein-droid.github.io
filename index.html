@@ -110,7 +110,6 @@
           <p class="hero-desc">Toploader Trading Co. specializes in Pokémon singles, graded slabs, and sealed product. Find us at regional card shows or reach out anytime — we also buy collections.</p>
           <div class="hero-btns">
             <a class="btn btn-primary" href="#shows">Upcoming Shows</a>
-            <a class="btn btn-outline" href="#featured">Featured Cards</a>
             <a class="btn btn-accent" href="#" onclick="openSellModal();return false;">Sell My Cards</a>
           </div>
         </div>
@@ -225,37 +224,23 @@
         <div class="section-label">Find us</div>
         <h2 class="section-h">Upcoming shows</h2>
         <p class="section-sub">We vend at card shows across Kentucky and Indiana. Come find the table, say hello, and dig through the binders.</p>
-        <div class="shows-grid">
-          <div>
-            <ul class="show-list">
-              <li class="show-row">
-                <div class="show-date-box"><div class="show-month">Apr</div><div class="show-day">25</div></div>
-                <div class="show-info"><div class="show-name">Owensboro Card Show</div><div class="show-location">Owensboro, KY</div></div>
-                <div class="show-tag">Upcoming</div>
-              </li>
-              <li class="show-row">
-                <div class="show-date-box"><div class="show-month">May</div><div class="show-day">1</div></div>
-                <div class="show-info"><div class="show-name">Evansville Armory Card Show</div><div class="show-location">Evansville, IN · May 1–2</div></div>
-                <div class="show-tag">Upcoming</div>
-              </li>
-              <li class="show-row">
-                <div class="show-date-box"><div class="show-month">May</div><div class="show-day">16</div></div>
-                <div class="show-info"><div class="show-name">Western Kentucky Collectibles Show</div><div class="show-location">Western KY</div></div>
-                <div class="show-tag">Upcoming</div>
-              </li>
-            </ul>
-          </div>
-          <div class="social-panel">
-            <div>
-              <h3>Stay in the loop</h3>
-              <p>We post show previews, new inventory drops, and updates before every event. Follow us so you know what's coming to the table.</p>
-            </div>
-            <div class="social-btns">
-              <a class="social-link" href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener"><span>Instagram · @toploadertrading</span><span class="social-link-arrow">&#8599;</span></a>
-              <a class="social-link" href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook · Toploader Trading Co.</span><span class="social-link-arrow">&#8599;</span></a>
-            </div>
-          </div>
-        </div>
+        <ul class="show-list show-list-scroll">
+          <li class="show-row">
+            <div class="show-date-box"><div class="show-month">Apr</div><div class="show-day">25</div></div>
+            <div class="show-info"><div class="show-name">Owensboro Card Show</div><div class="show-location">Owensboro, KY</div></div>
+            <div class="show-tag">Upcoming</div>
+          </li>
+          <li class="show-row">
+            <div class="show-date-box"><div class="show-month">May</div><div class="show-day">1</div></div>
+            <div class="show-info"><div class="show-name">Evansville Armory Card Show</div><div class="show-location">Evansville, IN · May 1–2</div></div>
+            <div class="show-tag">Upcoming</div>
+          </li>
+          <li class="show-row">
+            <div class="show-date-box"><div class="show-month">May</div><div class="show-day">16</div></div>
+            <div class="show-info"><div class="show-name">Western Kentucky Collectibles Show</div><div class="show-location">Western KY</div></div>
+            <div class="show-tag">Upcoming</div>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -318,19 +303,25 @@
               <li class="email-item"><span class="email-label">General inquiries</span><a class="email-addr" href="mailto:info@toploadertrading.com"><span class="__cf_email__" data-cfemail="7e171018113e0a110e12111f1a1b0c0a0c1f1a171019501d1113">info@toploadertrading.com</span></a></li>
               <li class="email-item"><span class="email-label">Elijah</span><a class="email-addr" href="mailto:Elijah@toploadertrading.com">Elijah@toploadertrading.com</a></li>
               <li class="email-item"><span class="email-label">Brynn</span><a class="email-addr" href="mailto:Brynn@toploadertrading.com">Brynn@toploadertrading.com</a></li>
-              </ul>
+            </ul>
           </div>
-          <div class="contact-card">
-            <h3>At shows</h3>
-            <p style="color:var(--text-2);font-size:.9rem;margin-bottom:20px;line-height:1.65;">The fastest way to ask about a specific card or have us make you an offer on a collection is a text message to (270) 883-0151 or direct message on Instagram or Facebook. We're responsive.</p>
-            <div class="payment-section">
-              <div class="payment-label">Payment accepted at shows</div>
-              <div class="payment-pills">
-                <span class="pill">Cash</span>
-                <span class="pill">Venmo</span>
-                <span class="pill">CashApp</span>
-                <span class="pill">PayPal</span>
-              </div>
+          <div class="contact-card contact-card-dark">
+            <h3>Text or Call</h3>
+            <p class="contact-dark-sub">The fastest way to ask about a card or get an offer on your collection. We're responsive.</p>
+            <div class="contact-phone">(270) 883-0151</div>
+            <div class="contact-phone-btns">
+              <a class="contact-phone-btn contact-phone-call" href="tel:+12708830151">Call</a>
+              <a class="contact-phone-btn contact-phone-text" href="sms:+12708830151">Text</a>
+            </div>
+          </div>
+          <div class="social-panel">
+            <div>
+              <h3>Stay in the loop</h3>
+              <p>We post show previews, new inventory drops, and updates before every event. Follow us so you know what's coming to the table.</p>
+            </div>
+            <div class="social-btns">
+              <a class="social-link" href="https://www.instagram.com/toploadertrading?igsh=MXFwNjRvOHkwOTQ5Mw%3D%3D&utm_source=qr" target="_blank" rel="noopener"><span>Instagram · @toploadertrading</span><span class="social-link-arrow">&#8599;</span></a>
+              <a class="social-link" href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener"><span>Facebook · Toploader Trading Co.</span><span class="social-link-arrow">&#8599;</span></a>
             </div>
           </div>
         </div>
