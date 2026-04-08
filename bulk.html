@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bulk Pokémon Card Calculator — Toploader Trading Co.</title>
+  <meta name="description" content="Get an instant estimate for your bulk Pokémon card collection. Enter your card counts and see what Toploader Trading Co. in Owensboro, KY will pay."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --white:#ffffff;--off-white:#f7f5f2;--light:#edebe7;
+      --black:#0d0d0d;--black-2:#161616;--black-3:#1f1f1f;
+      --black-border:rgba(255,255,255,0.08);
+      --text:#1a1814;--text-2:#5a5650;--text-3:#9a9690;
+      --accent:#c8102e;--accent-light:#fdf0f2;--accent-mid:#f5c6ce;
+      --border:rgba(26,24,20,0.1);--border-strong:rgba(26,24,20,0.18);
+      --max:900px;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(94%,var(--max));margin:0 auto}
+
+    /* Header */
+    header{background:var(--black);border-bottom:1px solid var(--black-border);position:sticky;top:0;z-index:100}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.3rem;letter-spacing:.04em;color:white}
+    .brand span{color:var(--accent)}
+    .back-link{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px;transition:color .15s}
+    .back-link:hover{color:white}
+
+    /* Hero */
+    .page-hero{padding:56px 0 40px;border-bottom:1px solid var(--black-border)}
+    .page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .page-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--accent)}
+    .page-h{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,4.5rem);line-height:.95;letter-spacing:.02em;color:white;margin-bottom:14px}
+    .page-h span{color:var(--accent)}
+    .page-sub{color:rgba(255,255,255,.5);font-size:.97rem;max-width:520px;line-height:1.65}
+
+    /* Calculator */
+    .calc-wrap{padding:40px 0 64px}
+    .calc-grid{display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+
+    .card-types{display:flex;flex-direction:column;gap:12px}
+    .card-type-row{background:var(--black-2);border:1px solid var(--black-border);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:16px;transition:border-color .15s}
+    .card-type-row:focus-within{border-color:rgba(200,16,46,.4)}
+    .ct-info{flex:1}
+    .ct-name{font-weight:600;font-size:.95rem;color:white;margin-bottom:2px}
+    .ct-desc{font-size:.78rem;color:rgba(255,255,255,.35)}
+    .ct-price{font-family:var(--font-display);font-size:1.1rem;color:var(--accent);letter-spacing:.03em;white-space:nowrap;margin-right:8px}
+    .ct-input{width:90px;background:var(--black-3);border:1px solid var(--black-border);border-radius:8px;padding:8px 12px;font-size:.95rem;font-family:var(--font-body);color:white;text-align:center;transition:border-color .15s}
+    .ct-input:focus{outline:none;border-color:var(--accent)}
+    .ct-input::placeholder{color:rgba(255,255,255,.2)}
+
+    /* Sticky result panel */
+    .result-panel{background:var(--black-2);border:1px solid var(--black-border);border-radius:16px;padding:28px 24px;position:sticky;top:84px}
+    .result-title{font-family:var(--font-display);font-size:1.4rem;letter-spacing:.04em;color:white;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--black-border)}
+    .result-lines{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+    .result-line{display:flex;justify-content:space-between;align-items:center;font-size:.88rem}
+    .result-line-label{color:rgba(255,255,255,.45)}
+    .result-line-val{font-weight:600;color:white}
+    .result-line-val.zero{color:rgba(255,255,255,.2)}
+    .result-divider{height:1px;background:var(--black-border);margin:4px 0 16px}
+    .result-total-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px}
+    .result-total{font-family:var(--font-display);font-size:3rem;color:white;letter-spacing:.02em;line-height:1}
+    .result-total span{color:var(--accent)}
+    .result-range{font-size:.78rem;color:rgba(255,255,255,.3);margin-top:4px;margin-bottom:20px}
+    .result-cta{display:block;background:var(--accent);color:white;text-align:center;padding:13px;border-radius:8px;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s;margin-bottom:10px}
+    .result-cta:hover{opacity:.88}
+    .result-cta-2{display:block;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:.85rem;border:1px solid var(--black-border);transition:background .15s}
+    .result-cta-2:hover{background:rgba(255,255,255,.1);color:white}
+    .result-note{font-size:.72rem;color:rgba(255,255,255,.2);text-align:center;margin-top:14px;line-height:1.5}
+
+    /* Disclaimer */
+    .disclaimer{background:rgba(255,255,255,.03);border:1px solid var(--black-border);border-radius:10px;padding:16px 18px;margin-top:20px}
+    .disclaimer p{font-size:.78rem;color:rgba(255,255,255,.3);line-height:1.6}
+    .disclaimer strong{color:rgba(255,255,255,.5)}
+
+    /* Mobile */
+    @media(max-width:720px){
+      .calc-grid{grid-template-columns:1fr}
+      .result-panel{position:static;margin-top:8px}
+    }
+    @media(max-width:500px){
+      .ct-input{width:72px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html">TOPLOADER <span>TRADING CO.</span></a>
+      <a class="back-link" href="index.html">← Back to site</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-eyebrow">Sell bulk cards</div>
+        <h1 class="page-h">Bulk Card<br/><span>Estimator</span></h1>
+        <p class="page-sub">Enter how many of each card type you have and we'll give you an instant price estimate. This is a guide — final offer may vary based on condition and playability.</p>
+      </div>
+    </section>
+
+    <section class="calc-wrap">
+      <div class="container">
+        <div class="calc-grid">
+
+          <div class="card-types" id="card-types">
+
+            <div class="card-type-row">
+              <div class="ct-info">
+                <div class="ct-name">EX / GX / V / VMAX / ex Cards</div>
+                <div class="ct-desc">Any EX, GX, V, VMAX, or ex card — non-full art</div>
+              </div>
+              <div class="ct-price">$0.30 ea</div>
+              <input class="ct-input" type="number" min="0" placeholder="0" data-rate="0.30" oninput="calcTotal()"/>
+            </div>
+
+            <div class="card-type-row">
+              <div class="ct-info">
+                <div class="ct-name">Full Art Cards</div>
+                <div class="ct-desc">Full art, alt art, rainbow rare, special illustration rare</div>
+              </div>
+              <div class="ct-price">$0.75 ea</div>
+              <input class="ct-input" type="number" min="0" placeholder="0" data-rate="0.75" oninput="calcTotal()"/>
+            </div>
+
+            <div class="card-type-row">
+              <div class="ct-info">
+                <div class="ct-name">Commons, Uncommons &amp; Trainers</div>
+                <div class="ct-desc">All non-holo commons, uncommons, supporters, items, and stadiums</div>
+              </div>
+              <div class="ct-price">$0.01 ea</div>
+              <input class="ct-input" type="number" min="0" placeholder="0" data-rate="0.01" oninput="calcTotal()"/>
+            </div>
+
+
+            <div class="disclaimer">
+              <p><strong>How this works:</strong> These are our standard bulk buying rates. Energy cards are not purchased. Cards in near-mint condition or from high-demand sets may be valued higher. Final offer confirmed in person or via photos — we never lowball.</p>
+            </div>
+          </div>
+
+          <div class="result-panel">
+            <div class="result-title">Your Estimate</div>
+            <div class="result-lines" id="result-lines">
+              <div class="result-line"><span class="result-line-label">EX / GX / V / VMAX / ex</span><span class="result-line-val zero" id="line-0">—</span></div>
+              <div class="result-line"><span class="result-line-label">Full Arts</span><span class="result-line-val zero" id="line-1">—</span></div>
+              <div class="result-line"><span class="result-line-label">Commons, Uncommons &amp; Trainers</span><span class="result-line-val zero" id="line-2">—</span></div>
+            </div>
+            <div class="result-divider"></div>
+            <div class="result-total-label">Estimated offer</div>
+            <div class="result-total" id="result-total">$<span>0.00</span></div>
+            <div class="result-range" id="result-range">Enter your card counts above</div>
+            <br/>
+            <a class="result-cta" href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbeff4ebf7f4fafffee9efe9fafff2f5fcb5f8f4f6a4e8eef9f1fef8efa6d9eef7f0bbd8f4f7f7fef8eff2f4f5bbd4fdfdfee9bbc9feeaeefee8ef">Email us your collection →</a>
+            <a class="result-cta-2" href="index.html#contact">View all contact options</a>
+            <div class="result-note">This estimate is a guide only. Final offer confirmed after we review your collection in person or by photos.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:28px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3)">
+    <a href="index.html" style="color:rgba(255,255,255,.5);font-weight:600">← Back to Toploader Trading Co.</a>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function calcTotal(){
+      var inputs = document.querySelectorAll('.ct-input');
+      var total = 0;
+      inputs.forEach(function(inp, i){
+        var qty = parseFloat(inp.value) || 0;
+        var rate = parseFloat(inp.dataset.rate) || 0;
+        var lineVal = qty * rate;
+        total += lineVal;
+        var el = document.getElementById('line-' + i);
+        if(el){
+          if(qty > 0){
+            el.textContent = '$' + lineVal.toFixed(2);
+            el.classList.remove('zero');
+          } else {
+            el.textContent = '—';
+            el.classList.add('zero');
+          }
+        }
+      });
+      document.querySelector('#result-total span').textContent = total.toFixed(2);
+      var low = (total * 0.9).toFixed(2);
+      var high = (total * 1.1).toFixed(2);
+      var range = document.getElementById('result-range');
+      if(total
