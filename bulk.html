@@ -198,4 +198,12 @@
       var low = (total * 0.9).toFixed(2);
       var high = (total * 1.1).toFixed(2);
       var range = document.getElementById('result-range');
-      if(total
+      if(total > 0){
+        range.textContent = 'Estimated range: $' + low + ' – $' + high;
+      } else {
+        range.textContent = 'Enter your card counts above';
+      }
+    }
+  </script>
+</body>
+</html>
