@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Singles, Slabs &amp; Sealed — Book an Appointment — Toploader Trading Co.</title>
+  <meta name="description" content="Selling Pokémon singles, graded slabs, or sealed product in Owensboro, KY? Book an appointment with Toploader Trading Co. and we come to you."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --white:#ffffff;--off-white:#f7f5f2;
+      --black:#0d0d0d;--black-2:#161616;--black-3:#1f1f1f;
+      --black-border:rgba(255,255,255,0.08);
+      --text:#1a1814;--text-2:#5a5650;--text-3:#9a9690;
+      --accent:#c8102e;--accent-light:#fdf0f2;--accent-mid:#f5c6ce;
+      --border:rgba(26,24,20,0.1);--border-strong:rgba(26,24,20,0.18);
+      --max:860px;
+      --font-display:'Bebas Neue',sans-serif;
+      --font-body:'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--black);color:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(94%,var(--max));margin:0 auto}
+
+    header{background:var(--black);border-bottom:1px solid var(--black-border);position:sticky;top:0;z-index:100}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-family:var(--font-display);font-size:1.3rem;letter-spacing:.04em;color:white}
+    .brand span{color:var(--accent)}
+    .back-link{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px;transition:color .15s}
+    .back-link:hover{color:white}
+
+    .page-hero{padding:56px 0 40px;border-bottom:1px solid var(--black-border)}
+    .page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    .page-eyebrow::before{content:'';display:block;width:20px;height:2px;background:var(--accent)}
+    .page-h{font-family:var(--font-display);font-size:clamp(2.8rem,6vw,4.5rem);line-height:.95;letter-spacing:.02em;color:white;margin-bottom:14px}
+    .page-h span{color:var(--accent)}
+    .page-sub{color:rgba(255,255,255,.5);font-size:.97rem;max-width:540px;line-height:1.65}
+
+    /* How it works */
+    .steps-section{padding:48px 0 40px;border-bottom:1px solid var(--black-border)}
+    .steps-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+    .steps-label::before{content:'';display:block;width:20px;height:2px;background:var(--accent)}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .step{background:var(--black-2);border:1px solid var(--black-border);border-radius:12px;padding:24px 20px}
+    .step-num{font-family:var(--font-display);font-size:2.5rem;color:var(--accent);line-height:1;margin-bottom:10px;opacity:.6}
+    .step-title{font-weight:600;font-size:.95rem;color:white;margin-bottom:6px}
+    .step-desc{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.6}
+    @media(max-width:600px){.steps-grid{grid-template-columns:1fr}}
+
+    /* What we buy */
+    .buys-section{padding:48px 0 40px;border-bottom:1px solid var(--black-border)}
+    .buys-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .buy-item{background:var(--black-2);border:1px solid var(--black-border);border-radius:10px;padding:18px 16px;display:flex;align-items:center;gap:12px}
+    .buy-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0}
+    .buy-text{font-size:.88rem;color:rgba(255,255,255,.7);font-weight:500}
+    @media(max-width:600px){.buys-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:400px){.buys-grid{grid-template-columns:1fr}}
+
+    /* Form */
+    .form-section{padding:48px 0 64px}
+    .form-card{background:var(--black-2);border:1px solid var(--black-border);border-radius:16px;padding:36px 32px}
+    .form-title{font-family:var(--font-display);font-size:1.8rem;letter-spacing:.04em;color:white;margin-bottom:6px}
+    .form-sub{font-size:.85rem;color:rgba(255,255,255,.35);margin-bottom:28px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-group.full{grid-column:1/-1}
+    label{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+    input,select,textarea{background:var(--black-3);border:1px solid var(--black-border);border-radius:8px;padding:11px 14px;font-size:.9rem;font-family:var(--font-body);color:white;width:100%;transition:border-color .15s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:rgba(200,16,46,.5)}
+    input::placeholder,textarea::placeholder{color:rgba(255,255,255,.2)}
+    select option{background:var(--black-2)}
+    textarea{resize:vertical;min-height:110px}
+    .form-submit{margin-top:20px;width:100%;background:var(--accent);color:white;border:none;padding:14px;border-radius:8px;font-weight:700;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:opacity .15s;font-family:var(--font-body)}
+    .form-submit:hover{opacity:.88}
+    .form-note{font-size:.78rem;color:rgba(255,255,255,.25);text-align:center;margin-top:14px;line-height:1.5}
+    .success-msg{display:none;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:20px;text-align:center;margin-top:16px}
+    .success-msg p{color:#86efac;font-weight:500}
+    @media(max-width:560px){.form-grid{grid-template-columns:1fr}.form-card{padding:24px 20px}}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html">TOPLOADER <span>TRADING CO.</span></a>
+      <a class="back-link" href="index.html">← Back to site</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-eyebrow">Sell singles, slabs &amp; sealed</div>
+        <h1 class="page-h">Book an<br/><span>Appointment</span></h1>
+        <p class="page-sub">Selling higher-value cards, graded slabs, or sealed product? Fill out the form below and we'll come to you anywhere in the Owensboro area. Free, no-obligation offers.</p>
+      </div>
+    </section>
+
+    <section class="steps-section">
+      <div class="container">
+        <div class="steps-label">How it works</div>
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-title">Fill out the form</div>
+            <div class="step-desc">Tell us what you have, roughly how many cards, and when you're available. Takes 2 minutes.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-title">We reach out</div>
+            <div class="step-desc">We'll contact you within 24 hours to confirm a time that works and ask any follow-up questions.</div>
+          </div>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-title">We come to you</div>
+            <div class="step-desc">We show up, review your cards, and make you a fair offer on the spot. Cash or digital payment same day.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="buys-section">
+      <div class="container">
+        <div class="steps-label">What we buy</div>
+        <div class="buys-grid">
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Raw singles (any set)</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">PSA graded slabs</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">BGS graded slabs</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Booster packs</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Elite Trainer Boxes</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Sealed sets &amp; collections</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Full art &amp; alt art rares</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Vintage cards (Base Set era)</div></div>
+          <div class="buy-item"><div class="buy-dot"></div><div class="buy-text">Complete binder collections</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <div class="container">
+        <div class="form-card">
+          <div class="form-title">Request an Appointment</div>
+          <div class="form-sub">We'll get back to you within 24 hours — usually much faster.</div>
+          <form id="appt-form" onsubmit="submitForm(event)">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fname">Your name</label>
+                <input type="text" id="fname" name="name" placeholder="First and last name" required/>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(270) 555-0000" required/>
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" placeholder="you@email.com"/>
+              </div>
+              <div class="form-group">
+                <label for="location">Your city / area</label>
+                <input type="text" id="location" name="location" placeholder="e.g. Owensboro, Evansville..." required/>
+              </div>
+              <div class="form-group full">
+                <label for="card-type">What are you selling?</label>
+                <select id="card-type" name="card_type" required>
+                  <option value="" disabled selected>Select card type</option>
+                  <option value="singles">Raw singles</option>
+                  <option value="slabs">Graded slabs (PSA / BGS)</option>
+                  <option value="sealed">Sealed product (packs / ETBs)</option>
+                  <option value="mix">A mix of the above</option>
+                  <option value="collection">Full collection (all types)</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="availability">When are you available?</label>
+                <input type="text" id="availability" name="availability" placeholder="e.g. weekday evenings, this Saturday afternoon..."/>
+              </div>
+              <div class="form-group full">
+                <label for="notes">Tell us about your cards</label>
+                <textarea id="notes" name="notes" placeholder="Roughly how many cards, any notable cards you know of, condition, etc. The more you tell us the faster we can get you an offer."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit">Request Appointment</button>
+            <div class="form-note">By submitting you agree to be contacted by Toploader Trading Co. via phone, text, or email regarding your collection. No spam, ever.</div>
+          </form>
+          <div class="success-msg" id="success-msg">
+            <p>✓ Request received! We'll be in touch within 24 hours to confirm your appointment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:28px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3)">
+    <a href="index.html" style="color:rgba(255,255,255,.5);font-weight:600">← Back to Toploader Trading Co.</a>
+  </footer>
+
+  <script>
+    function submitForm(e){
+      e.preventDefault();
+      var form = document.getElementById('appt-form');
+      var data = new FormData(form);
+      var subject = 'Appointment Request — ' + (data.get('name') || 'Customer');
+      var body = 'Name: ' + (data.get('name') || '') +
+        '%0APhone: ' + (data.get('phone') || '') +
+        '%0AEmail: ' + (data.get('email') || '') +
+        '%0ALocation: ' + (data.get('location') || '') +
+        '%0ACard Type: ' + (data.get('card_type') || '') +
+        '%0AAvailability: ' + (data.get('availability') || '') +
+        '%0ANotes: ' + (data.get('notes') || '');
+      window.location.href = 'mailto:info@toploadertrading.com?subject=' + encodeURIComponent(subject) + '&body=' + body;
+      form.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
