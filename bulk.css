@@ -1,0 +1,64 @@
+/* ===== BULK PAGE STYLES ===== */
+
+:root { --max: 900px; }
+
+body { background: var(--black); color: var(--white); }
+
+/* Calculator layout */
+.calc-wrap { padding: 40px 0 64px; }
+.calc-grid { display: grid; grid-template-columns: 1fr 340px; gap: 24px; align-items: stretch; }
+
+/* Card type rows */
+.card-types { display: flex; flex-direction: column; gap: 12px; height: 100%; }
+.card-rows { display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.card-type-row { flex: 1; background: var(--black-2); border: 1px solid var(--black-border); border-radius: 12px; padding: 18px 20px; display: flex; align-items: center; gap: 16px; transition: border-color .15s; }
+.card-type-row:focus-within { border-color: rgba(200,16,46,.4); }
+.ct-info { flex: 1; }
+.ct-name { font-weight: 600; font-size: .95rem; color: white; margin-bottom: 2px; }
+.ct-desc { font-size: .78rem; color: rgba(255,255,255,.35); }
+.ct-price { font-family: var(--font-display); font-size: 1.1rem; color: var(--accent); letter-spacing: .03em; white-space: nowrap; margin-right: 8px; }
+.ct-input { width: 90px; background: var(--black-3); border: 1px solid var(--black-border); border-radius: 8px; padding: 8px 12px; font-size: .95rem; font-family: var(--font-body); color: white; text-align: center; transition: border-color .15s; }
+.ct-input:focus { outline: none; border-color: var(--accent); }
+.ct-input::placeholder { color: rgba(255,255,255,.2); }
+
+/* Result panel */
+.result-panel { background: var(--black-2); border: 1px solid var(--black-border); border-radius: 16px; padding: 28px 24px; position: sticky; top: 84px; }
+.result-title { font-family: var(--font-display); font-size: 1.4rem; letter-spacing: .04em; color: white; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--black-border); }
+.result-lines { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.result-line { display: flex; justify-content: space-between; align-items: center; font-size: .88rem; }
+.result-line-label { color: rgba(255,255,255,.45); }
+.result-line-val { font-weight: 600; color: white; }
+.result-line-val.zero { color: rgba(255,255,255,.2); }
+.result-divider { height: 1px; background: var(--black-border); margin: 4px 0 16px; }
+.result-total-label { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 6px; }
+.result-total { font-family: var(--font-display); font-size: 3rem; color: white; letter-spacing: .02em; line-height: 1; }
+.result-total span { color: var(--accent); }
+.result-range { font-size: .78rem; color: rgba(255,255,255,.3); margin-top: 4px; margin-bottom: 20px; }
+.cta-stack { display: flex; flex-direction: column; gap: 10px; }
+.result-cta { display: block; background: var(--accent); color: white; text-align: center; padding: 13px; border-radius: 8px; font-weight: 700; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; transition: opacity .15s; }
+.result-cta:hover { opacity: .88; }
+.result-cta-2 { display: block; background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); text-align: center; padding: 12px; border-radius: 8px; font-weight: 600; font-size: .85rem; border: 1px solid var(--black-border); transition: background .15s; }
+.result-cta-2:hover { background: rgba(255,255,255,.1); color: white; }
+#sms-cta { display: none; }
+.result-note { font-size: .72rem; color: rgba(255,255,255,.2); text-align: center; margin-top: 14px; line-height: 1.5; }
+
+/* Disclaimer */
+.disclaimer { background: rgba(255,255,255,.03); border: 1px solid var(--black-border); border-radius: 10px; padding: 16px 18px; margin-top: 20px; }
+.disclaimer p { font-size: .78rem; color: rgba(255,255,255,.3); line-height: 1.6; }
+.disclaimer strong { color: rgba(255,255,255,.5); }
+
+/* Mobile */
+@media(max-width:720px) {
+  #sms-cta { display: block; background: var(--accent); color: white; font-weight: 700; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; border: none; order: -1; }
+  #email-cta { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); font-size: .85rem; font-weight: 600; border: 1px solid var(--black-border); }
+  #email-cta:hover { background: rgba(255,255,255,.1); color: white; }
+  #sms-cta:hover { opacity: .88; }
+  .calc-grid { grid-template-columns: 1fr; align-items: start; }
+  .card-types { height: auto; }
+  .card-rows { flex: none; }
+  .card-type-row { flex: none; }
+  .result-panel { position: static; margin-top: 8px; }
+}
+@media(max-width:500px) {
+  .ct-input { width: 72px; }
+}

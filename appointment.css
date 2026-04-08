@@ -1,0 +1,46 @@
+/* ===== APPOINTMENT PAGE STYLES ===== */
+
+:root { --max: 860px; }
+
+body { background: var(--black); color: var(--white); }
+
+/* How it works */
+.steps-section { padding: 48px 0 40px; border-bottom: 1px solid var(--black-border); }
+.steps-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+.steps-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.step { background: var(--black-2); border: 1px solid var(--black-border); border-radius: 12px; padding: 24px 20px; }
+.step-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 10px; opacity: .6; }
+.step-title { font-weight: 600; font-size: .95rem; color: white; margin-bottom: 6px; }
+.step-desc { font-size: .82rem; color: rgba(255,255,255,.4); line-height: 1.6; }
+@media(max-width:600px) { .steps-grid { grid-template-columns: 1fr; } }
+
+/* What we buy */
+.buys-section { padding: 48px 0 40px; border-bottom: 1px solid var(--black-border); }
+.buys-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 24px; }
+.buy-item { background: var(--black-2); border: 1px solid var(--black-border); border-radius: 10px; padding: 18px 16px; display: flex; align-items: center; gap: 12px; }
+.buy-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.buy-text { font-size: .88rem; color: rgba(255,255,255,.7); font-weight: 500; }
+@media(max-width:600px) { .buys-grid { grid-template-columns: 1fr 1fr; } }
+@media(max-width:400px) { .buys-grid { grid-template-columns: 1fr; } }
+
+/* Form */
+.form-section { padding: 48px 0 64px; }
+.form-card { background: var(--black-2); border: 1px solid var(--black-border); border-radius: 16px; padding: 36px 32px; }
+.form-title { font-family: var(--font-display); font-size: 1.8rem; letter-spacing: .04em; color: white; margin-bottom: 6px; }
+.form-sub { font-size: .85rem; color: rgba(255,255,255,.35); margin-bottom: 28px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1/-1; }
+label { font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+input, select, textarea { background: var(--black-3); border: 1px solid var(--black-border); border-radius: 8px; padding: 11px 14px; font-size: .9rem; font-family: var(--font-body); color: white; width: 100%; transition: border-color .15s; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: rgba(200,16,46,.5); }
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,.2); }
+select option { background: var(--black-2); }
+textarea { resize: vertical; min-height: 110px; }
+.form-submit { margin-top: 20px; width: 100%; background: var(--accent); color: white; border: none; padding: 14px; border-radius: 8px; font-weight: 700; font-size: .9rem; letter-spacing: .05em; text-transform: uppercase; cursor: pointer; transition: opacity .15s; font-family: var(--font-body); }
+.form-submit:hover { opacity: .88; }
+.form-note { font-size: .78rem; color: rgba(255,255,255,.25); text-align: center; margin-top: 14px; line-height: 1.5; }
+.success-msg { display: none; background: rgba(34,197,94,.1); border: 1px solid rgba(34,197,94,.25); border-radius: 10px; padding: 20px; text-align: center; margin-top: 16px; }
+.success-msg p { color: #86efac; font-weight: 500; }
+@media(max-width:560px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: 24px 20px; } }
