@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://toploadertrading.com/</loc>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://toploadertrading.com/about.html</loc>
+  </url>
+
+  <!-- Sell Pokémon Collections -->
+  <url>
+    <loc>https://toploadertrading.com/sell-pokemon-collections.html</loc>
+  </url>
+
+  <!-- Schedule Appointment -->
+  <url>
+    <loc>https://toploadertrading.com/schedule-appointment.html</loc>
+  </url>
+</urlset>
