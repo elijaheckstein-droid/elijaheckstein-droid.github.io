@@ -70,10 +70,17 @@
     .result-total{font-family:var(--font-display);font-size:3rem;color:white;letter-spacing:.02em;line-height:1}
     .result-total span{color:var(--accent)}
     .result-range{font-size:.78rem;color:rgba(255,255,255,.3);margin-top:4px;margin-bottom:20px}
-    .result-cta{display:block;background:var(--accent);color:white;text-align:center;padding:13px;border-radius:8px;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s;margin-bottom:10px}
+    .cta-stack{display:flex;flex-direction:column;gap:10px}
+    .result-cta{display:block;background:var(--accent);color:white;text-align:center;padding:13px;border-radius:8px;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s}
     .result-cta:hover{opacity:.88}
     .result-cta-2{display:block;background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);text-align:center;padding:12px;border-radius:8px;font-weight:600;font-size:.85rem;border:1px solid var(--black-border);transition:background .15s}
     .result-cta-2:hover{background:rgba(255,255,255,.1);color:white}
+    @media(max-width:720px){
+      #sms-cta{background:var(--accent);color:white;font-weight:700;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase;border:none;order:-1}
+      #email-cta{background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-size:.85rem;font-weight:600;border:1px solid var(--black-border)}
+      #email-cta:hover{background:rgba(255,255,255,.1);color:white}
+      #sms-cta:hover{opacity:.88}
+    }
     .result-note{font-size:.72rem;color:rgba(255,255,255,.2);text-align:center;margin-top:14px;line-height:1.5}
 
     /* Disclaimer */
@@ -160,8 +167,11 @@
             <div class="result-total" id="result-total">$<span>0.00</span></div>
             <div class="result-range" id="result-range">Enter your card counts above</div>
             <br/>
-            <a class="result-cta" id="email-cta" href="mailto:info@toploadertrading.com" onclick="updateEmailLink()">Email us your collection →</a>
-            <a class="result-cta-2" href="index.html#contact">View all contact options</a>
+            <div class="cta-stack">
+              <a class="result-cta-2" id="sms-cta" href="sms:+12703143538" onclick="updateSmsLink()">Text us your collection →</a>
+              <a class="result-cta" id="email-cta" href="mailto:info@toploadertrading.com" onclick="updateEmailLink()">Email us your collection →</a>
+            </div>
+            <a class="result-cta-2" href="index.html#contact" style="margin-top:10px">View all contact options</a>
             <div class="result-note">This estimate is a guide only. Final offer confirmed after we review your collection in person or by photos.</div>
           </div>
 
@@ -210,6 +220,29 @@
         range.textContent = 'Enter your card counts above';
       }
       updateEmailLink();
+      updateSmsLink();
+    }
+
+    function updateSmsLink(){
+      var inputs = document.querySelectorAll('.ct-input');
+      var total = 0;
+      var lines = [];
+      inputs.forEach(function(inp, i){
+        var qty = parseFloat(inp.value) || 0;
+        var rate = parseFloat(inp.dataset.rate) || 0;
+        var lineVal = qty * rate;
+        total += lineVal;
+        if(qty > 0) lines.push(cardLabels[i] + ': ' + qty + ' @ $' + lineVal.toFixed(2));
+      });
+
+      var body;
+      if(lines.length === 0){
+        body = 'Hi! I\'d like to sell my Pokémon card collection. Can you help?';
+      } else {
+        body = 'Hi! Bulk estimate from toploadertrading.com:\n' + lines.join('\n') + '\nTotal: ~$' + total.toFixed(2) + '\nCan we arrange a time?';
+      }
+
+      document.getElementById('sms-cta').href = 'sms:+12703143538?body=' + encodeURIComponent(body);
     }
 
     function updateEmailLink(){
