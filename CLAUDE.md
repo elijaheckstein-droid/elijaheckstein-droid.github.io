@@ -13,8 +13,9 @@ Open files directly in a browser — there is no dev server or build step. Chang
 ## Pages
 
 - `index.html` — Main landing page: hero, card showcase grid, event schedule, contact section, mobile nav, phone popup overlay
-- `bulk.html` — Bulk card price estimator: calculator with per-category inputs, live price breakdown in a sticky result panel
-- `appointment.html` — Appointment booking form for selling singles/slabs/sealed product; submits via `mailto:` link to `info@toploadertrading.com`
+- `sell-pokemon-collections.html` — Bulk card price estimator: calculator with per-category inputs, live price breakdown in a sticky result panel
+- `schedule-appointment.html` — Appointment booking form for selling singles/slabs/sealed product; submits via `mailto:` link to `info@toploadertrading.com`
+- `about.html` — Brand story page: origin story, photo placeholder, culture section, CTA
 
 ## Design System
 
@@ -28,8 +29,8 @@ All CSS lives inline in `<style>` blocks within each HTML file. The design uses 
 
 Vanilla JS only, inline in `<script>` tags at the bottom of each page:
 - `index.html`: hamburger menu toggle, phone popup open/close, smooth scroll behavior
-- `bulk.html`: `calcTotal()` reads `data-rate` attributes from `.ct-input` elements and updates the live estimate panel
-- `appointment.html`: `submitForm()` builds a `mailto:` URL from form fields and redirects; no backend involved
+- `sell-pokemon-collections.html`: `calcTotal()` reads `data-rate` attributes from `.ct-input` elements and updates the live estimate panel
+- `schedule-appointment.html`: `submitForm()` builds a `mailto:` URL from form fields and redirects; no backend involved
 
 ## Deployment
 
