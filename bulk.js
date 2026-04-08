@@ -55,7 +55,7 @@ function updateSmsLink() {
     body = 'Hi! Bulk estimate from toploadertrading.com:\n' + lines.join('\n') + '\nTotal: ~$' + total.toFixed(2) + '\nCan we arrange a time?';
   }
 
-  document.getElementById('sms-cta').href = 'sms:+12703143538?body=' + encodeURIComponent(body);
+  document.getElementById('sms-cta').href = 'sms:+12708830151?body=' + encodeURIComponent(body);
 }
 
 function updateEmailLink() {
