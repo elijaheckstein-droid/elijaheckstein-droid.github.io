@@ -89,14 +89,25 @@ function closeMobileNav() {
 
 // Reviews carousel
 (function () {
+  var carousel = document.getElementById('reviews-carousel');
   var track = document.getElementById('reviews-track');
   var cards = Array.from(track.querySelectorAll('.review-card'));
   var dotsWrap = document.getElementById('reviews-dots');
   var total = cards.length;
   var current = 0;
+  var gap = 16;
 
   function visibleCount() {
     return window.innerWidth <= 720 ? 1 : 3;
+  }
+
+  function setCardWidths() {
+    var visible = visibleCount();
+    var containerWidth = carousel.offsetWidth;
+    var cardWidth = (containerWidth - gap * (visible - 1)) / visible;
+    cards.forEach(function (card) {
+      card.style.width = cardWidth + 'px';
+    });
   }
 
   function maxIndex() {
@@ -112,7 +123,7 @@ function closeMobileNav() {
 
   function goTo(index) {
     current = Math.max(0, Math.min(index, maxIndex()));
-    var cardWidth = cards[0].offsetWidth + 16;
+    var cardWidth = cards[0].offsetWidth + gap;
     track.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
     document.querySelectorAll('.reviews-dot').forEach(function (d, i) {
       d.classList.toggle('active', i === current);
@@ -131,7 +142,11 @@ function closeMobileNav() {
     if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
   });
 
-  window.addEventListener('resize', function () { goTo(current); });
+  window.addEventListener('resize', function () {
+    setCardWidths();
+    goTo(Math.min(current, maxIndex()));
+  });
 
+  setCardWidths();
   goTo(0);
 })();
