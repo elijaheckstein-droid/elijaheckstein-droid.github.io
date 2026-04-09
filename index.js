@@ -86,3 +86,52 @@ function closeMobileNav() {
 
   render();
 })();
+
+// Reviews carousel
+(function () {
+  var track = document.getElementById('reviews-track');
+  var cards = Array.from(track.querySelectorAll('.review-card'));
+  var dotsWrap = document.getElementById('reviews-dots');
+  var total = cards.length;
+  var current = 0;
+
+  function visibleCount() {
+    return window.innerWidth <= 720 ? 1 : 3;
+  }
+
+  function maxIndex() {
+    return Math.max(0, total - visibleCount());
+  }
+
+  cards.forEach(function (_, i) {
+    var d = document.createElement('div');
+    d.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(index) {
+    current = Math.max(0, Math.min(index, maxIndex()));
+    var cardWidth = cards[0].offsetWidth + 16;
+    track.style.transform = 'translateX(-' + (current * cardWidth) + 'px)';
+    document.querySelectorAll('.reviews-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    document.getElementById('reviews-prev').disabled = current === 0;
+    document.getElementById('reviews-next').disabled = current >= maxIndex();
+  }
+
+  document.getElementById('reviews-prev').addEventListener('click', function () { goTo(current - 1); });
+  document.getElementById('reviews-next').addEventListener('click', function () { goTo(current + 1); });
+
+  var touchStartX = 0;
+  track.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  window.addEventListener('resize', function () { goTo(current); });
+
+  goTo(0);
+})();
