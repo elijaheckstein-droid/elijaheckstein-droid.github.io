@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://toploadertrading.com/</loc>
+    <lastmod>2026-04-09</lastmod>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/toploader-trading-pokemon-card-show-owensboro-ky.jpeg</image:loc>
+      <image:title>Toploader Trading Co. Pokemon card show booth in Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-blastoise-ex-owensboro.jpg</image:loc>
+      <image:title>Blastoise EX 142 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-zapdos-ex-owensboro.jpg</image:loc>
+      <image:title>Zapdos EX 202 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-mistys-lapras-owensboro.jpg</image:loc>
+      <image:title>Misty's Lapras 194 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-ascended-heroes-etb-owensboro.jpg</image:loc>
+      <image:title>Pokemon Ascended Heroes Elite Trainer Box for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-destined-rivals-etb-owensboro.jpg</image:loc>
+      <image:title>Pokemon Destined Rivals Elite Trainer Box for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-charizard-ex-owensboro.jpg</image:loc>
+      <image:title>Charizard EX 234 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-gengar-ex-owensboro.jpg</image:loc>
+      <image:title>Gengar EX 269 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-umbreon-owensboro.jpg</image:loc>
+      <image:title>Umbreon 17 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-mew-owensboro.jpg</image:loc>
+      <image:title>Mew GG10 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
   </url>
-
-  <!-- About Page -->
-  <url>
-    <loc>https://toploadertrading.com/about.html</loc>
-  </url>
-
-  <!-- Sell Pokémon Collections -->
   <url>
     <loc>https://toploadertrading.com/sell-pokemon-collections.html</loc>
+    <lastmod>2026-04-09</lastmod>
   </url>
-
-  <!-- Schedule Appointment -->
   <url>
     <loc>https://toploadertrading.com/schedule-appointment.html</loc>
+    <lastmod>2026-04-09</lastmod>
+  </url>
+  <url>
+    <loc>https://toploadertrading.com/about.html</loc>
+    <lastmod>2026-04-09</lastmod>
   </url>
 </urlset>
