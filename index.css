@@ -53,6 +53,7 @@ header { z-index: 200; }
 .sell-option-title { font-family: var(--font-display); font-size: 1.25rem; letter-spacing: .03em; color: white; margin-bottom: 4px; }
 .sell-option-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.55; margin-bottom: 8px; }
 .sell-option-cta { font-size: .8rem; font-weight: 700; color: var(--accent); letter-spacing: .03em; }
+.sell-options-divider { text-align: center; font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .08em; text-transform: uppercase; padding: 4px 0; }
 .sell-modal-close { text-align: center; margin-top: 20px; font-size: .8rem; color: rgba(255,255,255,.3); cursor: pointer; }
 .sell-modal-close:hover { color: rgba(255,255,255,.6); }
 

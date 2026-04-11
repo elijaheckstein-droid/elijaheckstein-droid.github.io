@@ -87,6 +87,15 @@
           <div class="sell-option-cta">Book an appointment →</div>
         </div>
       </a>
+      <div class="sell-options-divider">not sure which to pick? that's okay</div>
+      <a class="sell-option" href="#" onclick="document.getElementById('sell-overlay').classList.remove('open');openPhone();return false;">
+        <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div class="sell-option-content">
+          <div class="sell-option-title">Just Call or Text Us</div>
+          <div class="sell-option-desc">Not sure which option above fits your situation? No worries — reach out directly and we'll figure it out together.</div>
+          <div class="sell-option-cta">Call or text now →</div>
+        </div>
+      </a>
     </div>
     <div class="sell-modal-close" onclick="document.getElementById('sell-overlay').classList.remove('open')">Dismiss</div>
   </div>
@@ -134,8 +143,7 @@
         <a class="nav-text-link" href="#pay">Pay</a>
         <a class="nav-text-link" href="#contact">Contact</a>
         <a class="nav-text-link" href="about.html">About</a>
-        <a class="nav-sell nav-text-link" href="#" onclick="openSellModal();return false;">Sell My Cards</a>
-        <a class="nav-cta" href="#" onclick="openPhone();return false;">Get in Touch</a>
+        <a class="nav-cta" href="#" onclick="openSellModal();return false;">Sell My Cards</a>
       </nav>
       <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -147,8 +155,7 @@
       <a href="#pay" onclick="closeMobileNav()">Pay</a>
       <a href="#contact" onclick="closeMobileNav()">Contact</a>
       <a href="about.html" onclick="closeMobileNav()">About</a>
-      <a class="mob-sell" href="#" onclick="closeMobileNav();openSellModal();return false;">Sell My Cards</a>
-      <a class="mob-cta" href="#" onclick="closeMobileNav();openPhone();return false;">Call / Text Us — (270) 883-0151</a>
+      <a class="mob-cta" href="#" onclick="closeMobileNav();openSellModal();return false;">Sell My Cards</a>
     </nav>
   </header>
 
