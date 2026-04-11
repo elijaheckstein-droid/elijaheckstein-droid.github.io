@@ -68,7 +68,7 @@ img { display: block; max-width: 100%; }
 .page-intro-actions { display: flex; flex-direction: column; gap: 10px; }
 .page-intro-btn-primary { display: block; background: var(--accent); color: white; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; font-size: .9rem; letter-spacing: .02em; transition: opacity .15s; }
 .page-intro-btn-primary:hover { opacity: .88; color: white; }
-.page-intro-btn-secondary { background: rgba(255,255,255,.06); color: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.1); padding: 13px; border-radius: 8px; font-weight: 600; font-size: .88rem; cursor: pointer; font-family: var(--font-body); transition: background .15s, color .15s; width: 100%; text-align: center; display: block; }
+.page-intro-btn-secondary { background: rgba(255,255,255,.06); color: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.1); padding: 13px; border-radius: 8px; font-weight: 600; font-size: .88rem; cursor: pointer; font-family: var(--font-body); transition: background .15s, color .15s; width: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
 .page-intro-btn-secondary:hover { background: rgba(255,255,255,.1); color: white; }
 
 /* Header */
