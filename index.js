@@ -1,6 +1,12 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+function showSellScreen(screen) {
+  document.getElementById('sell-screen-main').style.display = screen === 'main' ? '' : 'none';
+  document.getElementById('sell-screen-bulk').style.display = screen === 'bulk' ? '' : 'none';
+  document.getElementById('sell-screen-appt').style.display = screen === 'appt' ? '' : 'none';
+}
 function openSellModal() {
+  showSellScreen('main');
   document.getElementById('sell-overlay').classList.add('open');
 }
 function closeSellModal(e) {

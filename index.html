@@ -154,41 +154,80 @@
   <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
-<!-- Sell Button-->
+<!-- Sell Modal -->
   <div class="sell-overlay" id="sell-overlay" onclick="closeSellModal(event)">
   <div class="sell-modal">
-    <div class="sell-modal-header">
-      <div class="sell-modal-title">SELL YOUR <span>CARDS</span></div>
-      <div class="sell-modal-sub">Choose how you want to sell</div>
+
+    <!-- Screen 1: Choose how to sell -->
+    <div id="sell-screen-main">
+      <div class="sell-modal-header">
+        <div class="sell-modal-title">SELL YOUR <span>CARDS</span></div>
+        <div class="sell-modal-sub">Choose how you want to sell</div>
+      </div>
+      <div class="sell-options">
+        <a class="sell-option" href="#" onclick="showSellScreen('bulk');return false;">
+          <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5M19 11a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2M19 11V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+          <div class="sell-option-content">
+            <div class="sell-option-title">Sell Bulk</div>
+            <div class="sell-option-desc">Have a big collection? Enter your card counts and get an instant price estimate.</div>
+            <div class="sell-option-cta">Get bulk estimate →</div>
+          </div>
+        </a>
+        <a class="sell-option" href="#" onclick="showSellScreen('appt');return false;">
+          <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
+          <div class="sell-option-content">
+            <div class="sell-option-title">Singles, Slabs &amp; Sealed</div>
+            <div class="sell-option-desc">Selling higher-value cards or graded slabs? Schedule an appointment and we come to you.</div>
+            <div class="sell-option-cta">Book an appointment →</div>
+          </div>
+        </a>
+        <div class="sell-options-divider">not sure which to pick? that's okay</div>
+        <a class="sell-option" href="#" onclick="document.getElementById('sell-overlay').classList.remove('open');openPhone();return false;">
+          <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div class="sell-option-content">
+            <div class="sell-option-title">Just Call or Text Us</div>
+            <div class="sell-option-desc">Not sure which option above fits your situation? No worries — reach out directly and we'll figure it out together.</div>
+            <div class="sell-option-cta">Call or text now →</div>
+          </div>
+        </a>
+      </div>
+      <div class="sell-modal-close" onclick="document.getElementById('sell-overlay').classList.remove('open')">Dismiss</div>
     </div>
-    <div class="sell-options">
-      <a class="sell-option" href="sell-pokemon-collections.html">
-        <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 11H5M19 11a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2M19 11V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
-        <div class="sell-option-content">
-          <div class="sell-option-title">Sell Bulk</div>
-          <div class="sell-option-desc">Have a big collection? Enter your card counts and get an instant price estimate.</div>
-          <div class="sell-option-cta">Get bulk estimate →</div>
-        </div>
-      </a>
-      <a class="sell-option" href="schedule-appointment.html">
-        <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
-        <div class="sell-option-content">
-          <div class="sell-option-title">Singles, Slabs &amp; Sealed</div>
-          <div class="sell-option-desc">Selling higher-value cards or graded slabs? Schedule an appointment and we come to you.</div>
-          <div class="sell-option-cta">Book an appointment →</div>
-        </div>
-      </a>
-      <div class="sell-options-divider">not sure which to pick? that's okay</div>
-      <a class="sell-option" href="#" onclick="document.getElementById('sell-overlay').classList.remove('open');openPhone();return false;">
-        <div class="sell-option-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-        <div class="sell-option-content">
-          <div class="sell-option-title">Just Call or Text Us</div>
-          <div class="sell-option-desc">Not sure which option above fits your situation? No worries — reach out directly and we'll figure it out together.</div>
-          <div class="sell-option-cta">Call or text now →</div>
-        </div>
-      </a>
+
+    <!-- Screen 2: Bulk — Before you start -->
+    <div id="sell-screen-bulk" style="display:none">
+      <div class="sell-modal-header">
+        <div class="sell-modal-title">BULK CARD <span>ESTIMATOR</span></div>
+        <div class="sell-modal-sub">Before you start</div>
+      </div>
+      <div class="page-intro-body" style="margin-bottom:24px">
+        <p>This tool is for <strong>bulk lots</strong> — commons, uncommons, and EX/GX/V/ex cards that typically sell for under a dollar each. Enter your counts and get an instant price estimate.</p>
+        <p>Have cards worth <strong>more than a few dollars each</strong>? Full arts, graded slabs, sealed product, or vintage singles belong in our appointment process — you'll get a better offer there.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a class="page-intro-btn-primary" href="sell-pokemon-collections.html">Continue to Bulk Estimator →</a>
+        <a class="page-intro-btn-secondary" href="schedule-appointment.html">I have valuable cards — Book an Appointment</a>
+      </div>
+      <div class="sell-modal-close" onclick="showSellScreen('main')">← Back</div>
     </div>
-    <div class="sell-modal-close" onclick="document.getElementById('sell-overlay').classList.remove('open')">Dismiss</div>
+
+    <!-- Screen 3: Appointment — Before you start -->
+    <div id="sell-screen-appt" style="display:none">
+      <div class="sell-modal-header">
+        <div class="sell-modal-title">BOOK AN <span>APPOINTMENT</span></div>
+        <div class="sell-modal-sub">Before you start</div>
+      </div>
+      <div class="page-intro-body" style="margin-bottom:24px">
+        <p>This page is for <strong>higher-value cards</strong> — singles worth more than a few dollars, graded slabs, sealed product, and vintage cards. We'll come to you and make an offer on the spot.</p>
+        <p>Have a pile of commons, uncommons, or low-value bulk? Our <strong>instant bulk estimator</strong> can price those out right now — no appointment needed.</p>
+      </div>
+      <div class="page-intro-actions">
+        <a class="page-intro-btn-primary" href="schedule-appointment.html">Continue to Booking →</a>
+        <a class="page-intro-btn-secondary" href="sell-pokemon-collections.html">I have bulk cards — Get an Instant Estimate</a>
+      </div>
+      <div class="sell-modal-close" onclick="showSellScreen('main')">← Back</div>
+    </div>
+
   </div>
 </div>
 
@@ -321,7 +360,7 @@
             </div>
             <div class="poke-card">
               <div class="poke-card-img"><img src="images/pokemon-ascended-heroes-etb-owensboro.jpg" alt="Pokémon Ascended Heroes Elite Trainer Box for sale Owensboro KY" loading="lazy" width="220" height="308" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div>
-              <div class="poke-card-body"><div class="poke-card-name">Ascended Heroes ETB</div><div class="poke-card-price">$130</div></div>
+              <div class="poke-card-body"><div class="poke-card-name">Nidoking 233</div><div class="poke-card-price">$130</div></div>
             </div>
             <div class="poke-card">
               <div class="poke-card-img"><img src="images/pokemon-destined-rivals-etb-owensboro.jpg" alt="Pokémon Destined Rivals Elite Trainer Box for sale Owensboro KY" loading="lazy" width="220" height="308" onerror="this.style.display='none';this.parentNode.innerHTML='Add card photo';"/></div>
