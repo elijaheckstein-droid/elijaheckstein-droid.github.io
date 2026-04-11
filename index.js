@@ -9,6 +9,15 @@ function openSellModal() {
   showSellScreen('main');
   document.getElementById('sell-overlay').classList.add('open');
 }
+
+document.getElementById('sell-option-bulk').addEventListener('click', function(e) {
+  e.preventDefault();
+  showSellScreen('bulk');
+});
+document.getElementById('sell-option-appt').addEventListener('click', function(e) {
+  e.preventDefault();
+  showSellScreen('appt');
+});
 function closeSellModal(e) {
   if (e.target === document.getElementById('sell-overlay')) {
     document.getElementById('sell-overlay').classList.remove('open');
