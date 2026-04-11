@@ -18,6 +18,41 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 .container { width: min(94%, var(--max)); margin: 0 auto; }
 
+/* Sections — shared across index, bulk, appointment */
+.section { padding: 72px 0; }
+.section-alt { background: var(--off-white); }
+.section-label { display: inline-flex; align-items: center; gap: 8px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+.section-h { font-family: var(--font-display); font-size: clamp(2.2rem,4vw,3.5rem); letter-spacing: .02em; line-height: 1; margin-bottom: 10px; color: var(--text); }
+.section-sub { color: var(--text-2); font-size: .97rem; max-width: 560px; margin-bottom: 40px; line-height: 1.65; }
+
+/* Contact grid — shared across index, bulk, appointment */
+.contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+.contact-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 22px 22px; }
+.contact-card h3 { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .03em; margin-bottom: 16px; }
+.contact-card-dark { background: var(--text); border-color: var(--text); color: white; }
+.contact-card-dark h3 { color: white; }
+.contact-dark-sub { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 24px; }
+.contact-phone { font-family: var(--font-display); font-size: 2rem; letter-spacing: .04em; color: white; margin-bottom: 16px; }
+.contact-phone-btns { display: flex; gap: 10px; }
+.contact-phone-btn { flex: 1; padding: 12px 0; border-radius: 8px; font-weight: 600; font-size: .88rem; text-align: center; transition: opacity .15s; }
+.contact-phone-btn:hover { opacity: .85; }
+.contact-phone-call { background: var(--accent); color: white; }
+.contact-phone-text { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); color: white; }
+.email-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.email-item { display: flex; flex-direction: column; gap: 2px; }
+.email-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-3); }
+.email-addr { font-size: .9rem; font-weight: 500; color: var(--accent); border-bottom: 1px solid transparent; word-break: break-all; }
+.email-addr:hover { border-color: var(--accent); }
+.social-panel { background: var(--text); border-radius: 14px; padding: 32px 28px; color: white; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; }
+.social-panel h3 { font-family: var(--font-display); font-size: 2rem; letter-spacing: .03em; line-height: 1.1; margin-bottom: 12px; }
+.social-panel p { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 24px; }
+.social-btns { display: flex; flex-direction: column; gap: 10px; }
+.social-link { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 12px 16px; color: white; font-weight: 600; font-size: .88rem; transition: background .15s; }
+.social-link:hover { background: rgba(255,255,255,.14); }
+.social-link-arrow { opacity: .5; }
+@media(max-width:960px) { .contact-grid { grid-template-columns: 1fr; } }
+
 /* Header */
 header { background: var(--black); border-bottom: 1px solid var(--black-border); position: sticky; top: 0; z-index: 100; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
