@@ -109,7 +109,10 @@
         <div class="form-card">
           <div class="form-title">Request an Appointment</div>
           <div class="form-sub">We'll get back to you within 24 hours — usually much faster.</div>
-          <form id="appt-form" onsubmit="submitForm(event)">
+          <form id="appt-form" action="https://formspree.io/f/mbdpnejl" method="POST">
+            <input type="hidden" name="_next" value="https://toploadertrading.com/thank-you.html"/>
+            <input type="hidden" name="_subject" value="Appointment Request — Toploader Trading Co."/>
+            <input type="hidden" name="form_type" value="Appointment Request"/>
             <div class="form-grid">
               <div class="form-group">
                 <label for="fname">Your name</label>
@@ -150,9 +153,6 @@
             <button type="submit" class="form-submit">Request Appointment</button>
             <div class="form-note">By submitting you agree to be contacted by Toploader Trading Co. via phone, text, or email regarding your collection. No spam, ever.</div>
           </form>
-          <div class="success-msg" id="success-msg">
-            <p>✓ Request received! We'll be in touch within 24 hours to confirm your appointment.</p>
-          </div>
         </div>
       </div>
     </section>
@@ -201,7 +201,6 @@
     <div style="margin-top:8px">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.5)">(270) 883-0151</a> · Owensboro, KY</div>
   </footer>
 
-  <script src="appointment.js"></script>
 
 </body>
 </html>

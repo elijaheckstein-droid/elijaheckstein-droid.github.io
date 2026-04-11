@@ -108,12 +108,20 @@
             <div class="result-total-label">Estimated offer</div>
             <div class="result-total" id="result-total">$<span>0.00</span></div>
             <div class="result-range" id="result-range">Enter your card counts above</div>
-            <br/>
-            <div class="cta-stack">
-              <a class="result-cta-2" id="sms-cta" href="sms:+12708830151" onclick="updateSmsLink()">Text us your collection →</a>
-              <a class="result-cta" id="email-cta" href="mailto:info@toploadertrading.com" onclick="updateEmailLink()">Email us your collection →</a>
-            </div>
-            <a class="result-cta-2" href="index.html#contact" style="margin-top:10px">View all contact options</a>
+            <a id="sms-cta" class="result-cta" href="sms:+12708830151" onclick="updateSmsLink()">Text us your estimate →</a>
+            <div class="result-form-divider"></div>
+            <div class="result-form-label">Send us your estimate</div>
+            <form id="bulk-form" action="https://formspree.io/f/mbdpnejl" method="POST">
+              <input type="hidden" name="_next" value="https://toploadertrading.com/thank-you.html"/>
+              <input type="hidden" name="_subject" value="Bulk Collection Inquiry — Toploader Trading Co."/>
+              <input type="hidden" name="form_type" value="Bulk Collection Inquiry"/>
+              <input type="hidden" name="estimate_total" id="hid-total"/>
+              <input type="hidden" name="estimate_breakdown" id="hid-breakdown"/>
+              <input type="text" name="name" placeholder="Your name" required/>
+              <input type="tel" name="phone" placeholder="Phone number" required/>
+              <input type="email" name="email" placeholder="Email (optional)"/>
+              <button type="submit" class="result-cta result-cta-btn">Send Estimate →</button>
+            </form>
             <div class="result-note">This estimate is a guide only. Final offer confirmed after we review your collection in person or by photos.</div>
           </div>
 

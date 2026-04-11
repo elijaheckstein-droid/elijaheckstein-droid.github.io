@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex"/>
+  <title>Request Received | Toploader Trading Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    body { background: var(--black); color: var(--white); }
+
+    .ty-hero { padding: 80px 0 72px; text-align: center; border-bottom: 1px solid var(--black-border); }
+    .ty-check { width: 56px; height: 56px; border-radius: 50%; background: rgba(34,197,94,.12); border: 1px solid rgba(34,197,94,.3); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; color: #86efac; font-size: 1.4rem; font-weight: 700; }
+    .ty-eyebrow { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .ty-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+    .ty-h { font-family: var(--font-display); font-size: clamp(2.8rem,6vw,4.5rem); line-height: .95; letter-spacing: .02em; color: white; margin-bottom: 16px; }
+    .ty-h span { color: var(--accent); }
+    .ty-sub { color: rgba(255,255,255,.5); font-size: .97rem; line-height: 1.65; max-width: 480px; margin: 0 auto; }
+
+    .ty-next { padding: 56px 0 72px; }
+    .ty-next-label { font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+    .ty-next-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--accent); }
+    .ty-next-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 40px; }
+    .ty-step { background: var(--black-2); border: 1px solid var(--black-border); border-radius: 12px; padding: 24px 20px; }
+    .ty-step-num { font-family: var(--font-display); font-size: 2.5rem; color: var(--accent); line-height: 1; margin-bottom: 10px; opacity: .6; }
+    .ty-step-title { font-weight: 600; font-size: .95rem; color: white; margin-bottom: 6px; }
+    .ty-step-desc { font-size: .82rem; color: rgba(255,255,255,.4); line-height: 1.6; }
+
+    .ty-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .ty-btn { display: inline-block; background: var(--accent); color: white; padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; transition: opacity .15s; }
+    .ty-btn:hover { opacity: .88; color: white; }
+    .ty-btn-secondary { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); border: 1px solid var(--black-border); }
+    .ty-btn-secondary:hover { background: rgba(255,255,255,.1); color: white; }
+
+    @media(max-width:600px) {
+      .ty-next-grid { grid-template-columns: 1fr; }
+      .ty-actions { flex-direction: column; }
+      .ty-btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="index.html">TOPLOADER <span>TRADING CO.</span></a>
+      <a class="back-link" href="index.html">← Back to site</a>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="ty-hero">
+      <div class="container">
+        <div class="ty-check">✓</div>
+        <div class="ty-eyebrow">Request received</div>
+        <h1 class="ty-h">You're all<br/><span>set.</span></h1>
+        <p class="ty-sub">We got your message and will be in touch within 24 hours — usually much faster. Keep an eye on your phone.</p>
+      </div>
+    </section>
+
+    <section class="ty-next">
+      <div class="container">
+        <div class="ty-next-label">What happens next</div>
+        <div class="ty-next-grid">
+          <div class="ty-step">
+            <div class="ty-step-num">01</div>
+            <div class="ty-step-title">We review your request</div>
+            <div class="ty-step-desc">We'll look over everything you sent and check any notes you included about your collection.</div>
+          </div>
+          <div class="ty-step">
+            <div class="ty-step-num">02</div>
+            <div class="ty-step-title">We reach out</div>
+            <div class="ty-step-desc">Expect a call or text within 24 hours to confirm details and set a time that works for you.</div>
+          </div>
+          <div class="ty-step">
+            <div class="ty-step-num">03</div>
+            <div class="ty-step-title">We come to you</div>
+            <div class="ty-step-desc">We show up, review your cards, and make a fair offer on the spot — cash or digital payment same day.</div>
+          </div>
+        </div>
+        <div class="ty-actions">
+          <a class="ty-btn" href="index.html">Back to Toploader Trading Co.</a>
+          <a class="ty-btn ty-btn-secondary" href="tel:+12708830151">Call us: (270) 883-0151</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:28px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3)">
+    <a href="index.html" style="color:rgba(255,255,255,.5);font-weight:600">← Back to Toploader Trading Co.</a>
+    <div style="margin-top:8px">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.5)">(270) 883-0151</a> · Owensboro, KY</div>
+  </footer>
+
+</body>
+</html>

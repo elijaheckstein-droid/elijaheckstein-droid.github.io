@@ -43,6 +43,20 @@ body { background: var(--black); color: var(--white); }
 #sms-cta { display: none; }
 .result-note { font-size: .72rem; color: rgba(255,255,255,.2); text-align: center; margin-top: 14px; line-height: 1.5; }
 
+/* Contact form inside result panel */
+.result-form-divider { height: 1px; background: var(--black-border); margin: 20px 0 16px; }
+.result-form-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 12px; }
+#bulk-form input[type="text"],
+#bulk-form input[type="tel"],
+#bulk-form input[type="email"] {
+  display: block; width: 100%; background: var(--black-3); border: 1px solid var(--black-border);
+  border-radius: 8px; padding: 10px 13px; font-size: .85rem; font-family: var(--font-body);
+  color: white; margin-bottom: 8px; transition: border-color .15s;
+}
+#bulk-form input:focus { outline: none; border-color: rgba(200,16,46,.5); }
+#bulk-form input::placeholder { color: rgba(255,255,255,.2); }
+button.result-cta-btn { border: none; cursor: pointer; font-family: var(--font-body); width: 100%; margin-top: 4px; }
+
 /* Disclaimer */
 .disclaimer { background: rgba(255,255,255,.03); border: 1px solid var(--black-border); border-radius: 10px; padding: 16px 18px; margin-top: 20px; }
 .disclaimer p { font-size: .78rem; color: rgba(255,255,255,.3); line-height: 1.6; }
@@ -50,9 +64,7 @@ body { background: var(--black); color: var(--white); }
 
 /* Mobile */
 @media(max-width:720px) {
-  #sms-cta { display: block; background: var(--accent); color: white; font-weight: 700; font-size: .88rem; letter-spacing: .04em; text-transform: uppercase; border: none; order: -1; }
-  #email-cta { background: rgba(255,255,255,.06); color: rgba(255,255,255,.7); font-size: .85rem; font-weight: 600; border: 1px solid var(--black-border); }
-  #email-cta:hover { background: rgba(255,255,255,.1); color: white; }
+  #sms-cta { display: block; }
   #sms-cta:hover { opacity: .88; }
   .calc-grid { grid-template-columns: 1fr; align-items: start; }
   .card-types { height: auto; }

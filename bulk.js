@@ -32,8 +32,8 @@ function calcTotal() {
   } else {
     range.textContent = 'Enter your card counts above';
   }
-  updateEmailLink();
   updateSmsLink();
+  updateHiddenFields();
 }
 
 function updateSmsLink() {
@@ -58,7 +58,7 @@ function updateSmsLink() {
   document.getElementById('sms-cta').href = 'sms:+12708830151?body=' + encodeURIComponent(body);
 }
 
-function updateEmailLink() {
+function updateHiddenFields() {
   var inputs = document.querySelectorAll('.ct-input');
   var total = 0;
   var lines = [];
@@ -67,22 +67,17 @@ function updateEmailLink() {
     var rate = parseFloat(inp.dataset.rate) || 0;
     var lineVal = qty * rate;
     total += lineVal;
-    if (qty > 0) {
-      lines.push(cardLabels[i] + ': ' + qty + ' cards @ $' + rate.toFixed(2) + ' ea = $' + lineVal.toFixed(2));
-    }
+    if (qty > 0) lines.push(cardLabels[i] + ': ' + qty + ' cards @ $' + lineVal.toFixed(2));
   });
-
-  var subject = 'Bulk Collection Estimate — Toploader Trading Co.';
-  var body;
-  if (lines.length === 0) {
-    body = 'Hi! I\'d like to sell my Pokémon card collection. Please get in touch to discuss.';
-  } else {
-    body = 'Hi! Here\'s my bulk card estimate from your website:\n\n'
-      + lines.join('\n')
-      + '\n\nEstimated Total: $' + total.toFixed(2)
-      + '\n\nPlease get in touch to arrange a time. Thanks!';
-  }
-
-  document.getElementById('email-cta').href =
-    'mailto:info@toploadertrading.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  var hidTotal = document.getElementById('hid-total');
+  var hidBreakdown = document.getElementById('hid-breakdown');
+  if (hidTotal) hidTotal.value = total > 0 ? '$' + total.toFixed(2) : 'No estimate entered';
+  if (hidBreakdown) hidBreakdown.value = lines.length > 0 ? lines.join(' | ') : 'No card counts entered';
 }
+
+// After SMS app opens, redirect the browser to the thank-you page
+document.getElementById('sms-cta').addEventListener('click', function () {
+  setTimeout(function () {
+    window.location.href = 'thank-you.html';
+  }, 500);
+});
