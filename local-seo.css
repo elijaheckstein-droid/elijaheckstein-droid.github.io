@@ -1,0 +1,172 @@
+/* ===== LOCAL SEO PAGES — Toploader Trading Co. ===== */
+
+:root { --max: 900px; }
+
+/* ── Hero ── */
+.lseo-hero {
+  background: var(--black);
+  border-bottom: 1px solid var(--black-border);
+  padding: 64px 0 52px;
+}
+.lseo-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.lseo-eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px; background: var(--accent);
+}
+.lseo-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  line-height: .95; letter-spacing: .02em;
+  color: white; margin-bottom: 20px;
+}
+.lseo-hero h1 span { color: var(--accent); }
+.lseo-hero-lead {
+  color: rgba(255,255,255,.65); font-size: 1.05rem;
+  line-height: 1.7; max-width: 640px; margin-bottom: 32px;
+}
+.lseo-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── Buttons ── */
+.lseo-btn-primary {
+  background: var(--accent); color: white;
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 700; font-size: .92rem;
+  transition: opacity .15s; display: inline-block;
+}
+.lseo-btn-primary:hover { opacity: .88; color: white; }
+.lseo-btn-ghost {
+  background: rgba(255,255,255,.08); color: white;
+  border: 1px solid rgba(255,255,255,.15);
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 600; font-size: .92rem;
+  transition: background .15s; display: inline-block;
+}
+.lseo-btn-ghost:hover { background: rgba(255,255,255,.14); }
+
+/* ── Sections ── */
+.lseo-section { padding: 64px 0; }
+.lseo-section.bg-light { background: var(--off-white); }
+.lseo-section.bg-white { background: #fff; }
+.lseo-section.bg-dark  { background: var(--black-3); }
+
+.lseo-section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+.lseo-section-label::before {
+  content: ''; display: block; width: 18px; height: 2px; background: var(--accent);
+}
+.lseo-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: .02em; line-height: 1;
+  color: var(--text); margin-bottom: 12px;
+}
+.bg-dark .lseo-h2 { color: white; }
+.lseo-p {
+  color: var(--text-2); font-size: .97rem;
+  line-height: 1.65; max-width: 600px; margin-bottom: 36px;
+}
+.bg-dark .lseo-p { color: rgba(255,255,255,.55); }
+
+/* ── Card grid ── */
+.lseo-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+}
+.lseo-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 24px 22px;
+}
+.bg-dark .lseo-card {
+  background: rgba(255,255,255,.05);
+  border-color: rgba(255,255,255,.08);
+}
+.lseo-card-title {
+  font-family: var(--font-display); font-size: 1.25rem;
+  letter-spacing: .04em; color: var(--text); margin-bottom: 6px;
+}
+.bg-dark .lseo-card-title { color: white; }
+.lseo-card-text { font-size: .9rem; color: var(--text-2); line-height: 1.6; }
+.bg-dark .lseo-card-text { color: rgba(255,255,255,.5); }
+
+/* ── Steps ── */
+.lseo-steps { display: flex; flex-direction: column; gap: 28px; }
+.lseo-step { display: flex; gap: 20px; align-items: flex-start; }
+.lseo-step-num {
+  flex-shrink: 0; width: 40px; height: 40px;
+  background: var(--accent); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.2rem;
+  color: white; letter-spacing: .04em;
+}
+.lseo-step-title {
+  font-family: var(--font-display); font-size: 1.25rem;
+  letter-spacing: .04em; color: var(--text); margin-bottom: 4px;
+}
+.bg-dark .lseo-step-title { color: white; }
+.lseo-step-text { font-size: .9rem; color: var(--text-2); line-height: 1.6; }
+.bg-dark .lseo-step-text { color: rgba(255,255,255,.5); }
+
+/* ── CTA box ── */
+.lseo-cta-wrap { padding: 64px 0; background: var(--black); }
+.lseo-cta-box {
+  background: var(--accent); border-radius: 18px;
+  padding: 52px 40px; text-align: center;
+}
+.lseo-cta-box h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: white; letter-spacing: .03em; margin-bottom: 12px;
+}
+.lseo-cta-box p {
+  color: rgba(255,255,255,.85); font-size: .97rem;
+  line-height: 1.65; max-width: 480px; margin: 0 auto 28px;
+}
+.lseo-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.lseo-cta-white {
+  background: white; color: var(--accent);
+  padding: 14px 28px; border-radius: 8px;
+  font-weight: 700; font-size: .92rem;
+  transition: opacity .15s; display: inline-block;
+}
+.lseo-cta-white:hover { opacity: .9; }
+.lseo-cta-outline {
+  background: transparent; color: white;
+  border: 2px solid rgba(255,255,255,.5);
+  padding: 12px 28px; border-radius: 8px;
+  font-weight: 600; font-size: .92rem;
+  transition: border-color .15s; display: inline-block;
+}
+.lseo-cta-outline:hover { border-color: white; }
+
+/* ── Footer area note ── */
+.lseo-area-note {
+  background: var(--black-2); border-top: 1px solid var(--black-border);
+  padding: 20px 0;
+}
+.lseo-area-tags { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+.lseo-area-tag { font-size: .78rem; color: rgba(255,255,255,.38); }
+.lseo-area-tag strong { color: rgba(255,255,255,.7); font-weight: 600; }
+
+/* ── Reviews strip ── */
+.lseo-reviews { padding: 56px 0; background: var(--off-white); }
+.lseo-reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+.lseo-review { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+.lseo-review-author { font-weight: 700; font-size: .9rem; color: var(--text); margin-bottom: 4px; }
+.lseo-review-stars { color: #f59e0b; font-size: .88rem; margin-bottom: 8px; }
+.lseo-review-text { font-size: .88rem; color: var(--text-2); line-height: 1.6; }
+
+/* ── Responsive ── */
+@media(max-width: 700px) {
+  .lseo-grid { grid-template-columns: 1fr; }
+  .lseo-reviews-grid { grid-template-columns: 1fr; }
+  .lseo-cta-box { padding: 36px 22px; }
+}
+@media(max-width: 500px) {
+  .lseo-hero-btns { flex-direction: column; }
+  .lseo-cta-btns { flex-direction: column; align-items: center; }
+}
