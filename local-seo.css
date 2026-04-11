@@ -160,6 +160,25 @@
 .lseo-review-stars { color: #f59e0b; font-size: .88rem; margin-bottom: 8px; }
 .lseo-review-text { font-size: .88rem; color: var(--text-2); line-height: 1.6; }
 
+/* ── FAQ ── */
+.lseo-faq { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 0; }
+.lseo-faq-item { padding: 22px 24px; border-bottom: 1px solid var(--border); }
+.lseo-faq-item:last-child { border-bottom: none; }
+.lseo-faq-q { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: .03em; color: var(--text); margin-bottom: 8px; }
+.lseo-faq-a { font-size: .9rem; color: var(--text-2); line-height: 1.65; }
+.lseo-faq-a a { color: var(--accent); text-decoration: underline; }
+
+/* ── Related pages strip ── */
+.lseo-related { padding: 48px 0; background: var(--black-2); }
+.lseo-related-label { display: inline-flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.lseo-related-label::before { content: ''; display: block; width: 18px; height: 2px; background: var(--accent); }
+.lseo-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.lseo-related-link { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 18px 20px; color: white; display: flex; flex-direction: column; gap: 4px; transition: background .15s; }
+.lseo-related-link:hover { background: rgba(255,255,255,.1); }
+.lseo-related-link-title { font-family: var(--font-display); font-size: 1.1rem; letter-spacing: .04em; line-height: 1.1; }
+.lseo-related-link-desc { font-size: .8rem; color: rgba(255,255,255,.45); line-height: 1.4; }
+@media(max-width: 700px) { .lseo-related-grid { grid-template-columns: 1fr; } }
+
 /* ── Responsive ── */
 @media(max-width: 700px) {
   .lseo-grid { grid-template-columns: 1fr; }
