@@ -1,8 +1,9 @@
 /* ===== APPOINTMENT PAGE STYLES ===== */
 
-:root { --max: 860px; }
+:root { --max: 1160px; }
 
 body { background: var(--black); color: var(--white); }
+.contact-card, .contact-card h3 { color: var(--text); }
 
 /* How it works */
 .steps-section { padding: 48px 0 40px; border-bottom: 1px solid var(--black-border); }

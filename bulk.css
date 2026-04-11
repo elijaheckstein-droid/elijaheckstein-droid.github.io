@@ -1,8 +1,9 @@
 /* ===== BULK PAGE STYLES ===== */
 
-:root { --max: 900px; }
+:root { --max: 1160px; }
 
 body { background: var(--black); color: var(--white); }
+.contact-card, .contact-card h3 { color: var(--text); }
 
 /* Calculator layout */
 .calc-wrap { padding: 40px 0 64px; }
