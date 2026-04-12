@@ -89,12 +89,44 @@
       </div>
     </section>
 
+    <section style="padding:0 0 64px">
+      <div class="container">
+        <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:8px"><span style="display:block;width:20px;height:2px;background:var(--accent)"></span>While you wait</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+          <a href="index.html#shows" style="display:block;background:var(--black-2);border:1px solid var(--black-border);border-radius:12px;padding:22px 20px;text-decoration:none">
+            <div style="font-family:var(--font-display);font-size:1.05rem;letter-spacing:.04em;color:white;margin-bottom:6px;line-height:1.1">Upcoming Shows</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.5">See where we'll be next — come find the table and dig through the binders.</div>
+            <div style="font-size:.75rem;color:var(--accent);font-weight:600;margin-top:10px">View schedule →</div>
+          </a>
+          <a href="about.html" style="display:block;background:var(--black-2);border:1px solid var(--black-border);border-radius:12px;padding:22px 20px;text-decoration:none">
+            <div style="font-family:var(--font-display);font-size:1.05rem;letter-spacing:.04em;color:white;margin-bottom:6px;line-height:1.1">Our Story</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.5">We're a husband-and-wife team in Owensboro who overdid the collecting thing. Learn who you're dealing with.</div>
+            <div style="font-size:.75rem;color:var(--accent);font-weight:600;margin-top:10px">Read about us →</div>
+          </a>
+          <a href="https://www.instagram.com/toploadertrading" target="_blank" rel="noopener" style="display:block;background:var(--black-2);border:1px solid var(--black-border);border-radius:12px;padding:22px 20px;text-decoration:none">
+            <div style="font-family:var(--font-display);font-size:1.05rem;letter-spacing:.04em;color:white;margin-bottom:6px;line-height:1.1">Follow on Instagram</div>
+            <div style="font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.5">Show previews, inventory drops, and updates before every event. The fastest way to stay in the loop.</div>
+            <div style="font-size:.75rem;color:var(--accent);font-weight:600;margin-top:10px">@toploadertrading ↗</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:28px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3)">
-    <a href="index.html" style="color:rgba(255,255,255,.5);font-weight:600">← Back to Toploader Trading Co.</a>
-    <div style="margin-top:8px">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.5)">(270) 883-0151</a> · Owensboro, KY</div>
+  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:36px 0 28px;text-align:center">
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-bottom:20px">
+      <a href="index.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Home</a>
+      <a href="about.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">About</a>
+      <a href="sell-pokemon-collections.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Bulk Estimator</a>
+      <a href="schedule-appointment.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Book Appointment</a>
+      <a href="https://www.instagram.com/toploadertrading" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Instagram</a>
+      <a href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Facebook</a>
+    </nav>
+    <div style="font-size:.8rem;color:rgba(255,255,255,.3)">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.45)">(270) 883-0151</a> · Owensboro, KY</div>
+    <div style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:6px">&copy; <span class="footer-year"></span> Toploader Trading Co.</div>
   </footer>
+  <script>document.querySelectorAll('.footer-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 
 </body>
 </html>

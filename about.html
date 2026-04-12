@@ -108,12 +108,12 @@
       <div class="container">
         <div class="about-cta-card">
           <div class="about-cta-text">
-            <h3>Come Find Us</h3>
-            <p>Check upcoming shows or reach out anytime — we're always happy to chat Pokémon.</p>
+            <h3>Ready to Sell Your Cards?</h3>
+            <p>Get an instant bulk estimate or book a personal appointment — we come to you anywhere in the Owensboro area.</p>
           </div>
           <div class="about-cta-btns">
-            <a class="about-btn about-btn-primary" href="index.html#shows">Upcoming Shows</a>
-            <a class="about-btn about-btn-secondary" href="index.html#contact">Get in Touch</a>
+            <a class="about-btn about-btn-primary" href="schedule-appointment.html">Book an Appointment</a>
+            <a class="about-btn about-btn-secondary" href="sell-pokemon-collections.html">Get a Bulk Estimate</a>
           </div>
         </div>
       </div>
@@ -121,10 +121,19 @@
 
   </main>
 
-  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:28px 0;text-align:center;font-size:.82rem;color:rgba(255,255,255,.3)">
-    <a href="index.html" style="color:rgba(255,255,255,.5);font-weight:600">← Back to Toploader Trading Co.</a>
-    <div style="margin-top:8px">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.5)">(270) 883-0151</a> · Owensboro, KY</div>
+  <footer style="background:var(--black);border-top:1px solid var(--black-border);padding:36px 0 28px;text-align:center">
+    <nav style="display:flex;flex-wrap:wrap;justify-content:center;gap:6px 22px;margin-bottom:20px">
+      <a href="index.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Home</a>
+      <a href="about.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">About</a>
+      <a href="sell-pokemon-collections.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Bulk Estimator</a>
+      <a href="schedule-appointment.html" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Book Appointment</a>
+      <a href="https://www.instagram.com/toploadertrading" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Instagram</a>
+      <a href="https://www.facebook.com/share/1TMSKyp7gd/?mibextid=wwXIfr" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);font-size:.8rem;font-weight:600">Facebook</a>
+    </nav>
+    <div style="font-size:.8rem;color:rgba(255,255,255,.3)">Call or text: <a href="tel:+12708830151" style="color:rgba(255,255,255,.45)">(270) 883-0151</a> · Owensboro, KY</div>
+    <div style="font-size:.75rem;color:rgba(255,255,255,.2);margin-top:6px">&copy; <span class="footer-year"></span> Toploader Trading Co.</div>
   </footer>
+  <script>document.querySelectorAll('.footer-year').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
 
 </body>
 </html>
