@@ -79,6 +79,29 @@
     {
       "@context": "https://schema.org",
       "@type": "Event",
+      "name": "Cards for Kids Charity Card Show — Toploader Trading Co.",
+      "startDate": "2026-04-18",
+      "endDate": "2026-04-18",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Cards for Kids Charity Card Show",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Owensboro",
+          "addressRegion": "KY",
+          "addressCountry": "US"
+        }
+      },
+      "organizer": {
+        "@type": "Store",
+        "@id": "https://toploadertrading.com/#business"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
       "name": "Owensboro Card Show — Toploader Trading Co.",
       "startDate": "2026-04-25",
       "endDate": "2026-04-25",
@@ -197,7 +220,7 @@
           </div>
         </a>
       </div>
-      <div class="sell-modal-close" onclick="document.getElementById('sell-overlay').classList.remove('open')">Dismiss</div>
+      <button class="sell-modal-close" onclick="document.getElementById('sell-overlay').classList.remove('open')">Dismiss</button>
     </div>
 
     <!-- Screen 2: Bulk — Before you start -->
@@ -214,7 +237,7 @@
         <a class="page-intro-btn-primary" href="sell-pokemon-collections/">Continue to Bulk Estimator →</a>
         <a class="page-intro-btn-secondary" href="schedule-appointment/">I have valuable cards — Book an Appointment</a>
       </div>
-      <div class="sell-modal-close" onclick="showSellScreen('main')">← Back</div>
+      <button class="sell-modal-close" onclick="showSellScreen('main')">← Back</button>
     </div>
 
     <!-- Screen 3: Appointment — Before you start -->
@@ -231,7 +254,7 @@
         <a class="page-intro-btn-primary" href="schedule-appointment/">Continue to Booking →</a>
         <a class="page-intro-btn-secondary" href="sell-pokemon-collections/">I have bulk cards — Get an Instant Estimate</a>
       </div>
-      <div class="sell-modal-close" onclick="showSellScreen('main')">← Back</div>
+      <button class="sell-modal-close" onclick="showSellScreen('main')">← Back</button>
     </div>
 
   </div>
@@ -248,7 +271,7 @@
         <a class="popup-call" href="tel:+12708830151">Call</a>
         <a class="popup-text" href="sms:+12708830151">Text</a>
       </div>
-      <div class="phone-popup-close" onclick="document.getElementById('phone-overlay').classList.remove('open')">Dismiss</div>
+      <button class="phone-popup-close" onclick="document.getElementById('phone-overlay').classList.remove('open')">Dismiss</button>
     </div>
   </div>
 
@@ -260,16 +283,16 @@
       <span>Find us at shows across KY &amp; IN</span>
       <span>Now vending at regional card shows</span>
       <span>Pokémon singles · slabs · sealed product</span>
-      <span>We buy collections — Reach Out for an offer</span>
+      <span>We buy collections — Reach out for an offer</span>
       <span>Find us at shows across KY &amp; IN</span>
     </div>
   </div>
 
   <header>
     <div class="container header-inner">
-      <a class="brand" href="#">
+      <a class="brand" href="/">
         <div class="brand-logo">
-          <img src="images/toploader-trading-co-owensboro-ky-logo.webp" alt="Toploader Trading Co. Owensboro KY" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='TT';"/>
+          <img src="images/toploader-trading-co-owensboro-ky-logo.webp" alt="Toploader Trading Co. Owensboro KY" onerror="this.style.display='none';this.parentNode.textContent='TT';"/>
         </div>
         <span class="brand-name">Toploader <span>Trading Co.</span></span>
       </a>
@@ -534,7 +557,7 @@
 
           <!-- Selling Guides -->
           <details style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden">
-            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none">
+            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none;border-radius:10px">
               <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(200,16,46,.18);flex-shrink:0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               </span>
@@ -562,7 +585,7 @@
 
           <!-- Store & Locations -->
           <details style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden">
-            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none">
+            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none;border-radius:10px">
               <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(200,16,46,.18);flex-shrink:0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
@@ -590,7 +613,7 @@
 
           <!-- Buy -->
           <details style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;overflow:hidden">
-            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none">
+            <summary style="display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;list-style:none;user-select:none;outline:none;border-radius:10px">
               <span style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(200,16,46,.18);flex-shrink:0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8102e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
               </span>

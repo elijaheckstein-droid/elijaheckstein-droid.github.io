@@ -55,7 +55,7 @@ header { z-index: 200; }
 .sell-option-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.55; margin-bottom: 8px; }
 .sell-option-cta { font-size: .8rem; font-weight: 700; color: var(--accent); letter-spacing: .03em; }
 .sell-options-divider { text-align: center; font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .08em; text-transform: uppercase; padding: 4px 0; }
-.sell-modal-close { text-align: center; margin-top: 20px; font-size: .8rem; color: rgba(255,255,255,.3); cursor: pointer; }
+.sell-modal-close { display: block; width: 100%; background: none; border: none; padding: 0; font-family: var(--font-body); text-align: center; margin-top: 20px; font-size: .8rem; color: rgba(255,255,255,.3); cursor: pointer; }
 .sell-modal-close:hover { color: rgba(255,255,255,.6); }
 
 /* Phone popup overlay */
@@ -72,7 +72,7 @@ header { z-index: 200; }
 .phone-popup-btns a:hover { opacity: .88; }
 .popup-call { background: var(--accent); color: white; }
 .popup-text { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); color: white; }
-.phone-popup-close { margin-top: 16px; font-size: .8rem; color: rgba(255,255,255,.3); cursor: pointer; letter-spacing: .04em; }
+.phone-popup-close { display: block; width: 100%; background: none; border: none; padding: 0; font-family: var(--font-body); margin-top: 16px; font-size: .8rem; color: rgba(255,255,255,.3); cursor: pointer; letter-spacing: .04em; }
 .phone-popup-close:hover { color: rgba(255,255,255,.6); }
 
 /* Announce ticker */
@@ -287,3 +287,6 @@ footer { background: var(--black); color: rgba(255,255,255,.5); padding: 36px 0;
   .poke-card[data-pos="left"] { transform: translateX(-160px) scale(0.78); opacity: .35; }
   .poke-card[data-pos="right"] { transform: translateX(160px) scale(0.78); opacity: .35; }
 }
+
+/* Accordion focus — keyboard users only */
+details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
