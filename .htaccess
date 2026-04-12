@@ -1,0 +1,68 @@
+# ============================================================
+# Toploader Trading Co. — Apache Security Headers
+# Place this file in the web root (/var/www/html or wherever
+# DocumentRoot points). Requires mod_headers to be enabled:
+#   sudo a2enmod headers && sudo systemctl reload apache2
+# ============================================================
+
+<IfModule mod_headers.c>
+
+    # ----------------------------------------------------------
+    # HSTS — force HTTPS for 1 year, all subdomains
+    # NOTE: Once deployed, browsers cache this for 1 year.
+    # Only enable after you're certain the site is HTTPS-only.
+    # To join the browser preload list, submit at:
+    #   https://hstspreload.org
+    # ----------------------------------------------------------
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # ----------------------------------------------------------
+    # Content Security Policy
+    # Breakdown of each directive:
+    #   default-src 'none'         — block anything not explicitly listed
+    #   script-src  'self'         — only load JS from this domain
+    #   style-src   'self'         — external CSS from this domain
+    #               'unsafe-inline'— allow style="" attributes (used throughout the site)
+    #               fonts.googleapis.com — Google Fonts CSS
+    #   font-src    fonts.gstatic.com — Google Fonts files
+    #   img-src     'self'         — images from this domain only
+    #   connect-src 'self'         — fetch/XHR from this domain only
+    #   frame-ancestors 'none'     — disallow framing this site (replaces X-Frame-Options)
+    #   base-uri    'self'         — prevent base tag injection attacks
+    #   form-action 'self'         — form submissions to this domain only
+    # ----------------------------------------------------------
+    Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+    # ----------------------------------------------------------
+    # X-Frame-Options — legacy fallback for older browsers
+    # (CSP frame-ancestors above handles modern browsers)
+    # ----------------------------------------------------------
+    Header always set X-Frame-Options "DENY"
+
+    # ----------------------------------------------------------
+    # X-Content-Type-Options — prevent MIME-type sniffing
+    # ----------------------------------------------------------
+    Header always set X-Content-Type-Options "nosniff"
+
+    # ----------------------------------------------------------
+    # Referrer-Policy — send full URL for same-origin,
+    # only origin for cross-origin requests
+    # ----------------------------------------------------------
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # ----------------------------------------------------------
+    # Permissions-Policy — disable features this site doesn't use
+    # ----------------------------------------------------------
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+</IfModule>
+
+# ----------------------------------------------------------
+# Redirect all HTTP traffic to HTTPS
+# Required for HSTS to be effective
+# ----------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
