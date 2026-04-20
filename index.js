@@ -94,3 +94,62 @@ function closeMobileNav() {
   render();
 })();
 
+(function () {
+  const cards = Array.from(document.querySelectorAll('.reviews-carousel-track .review-card'));
+  if (!cards.length) return;
+  const dotsWrap = document.getElementById('review-carousel-dots');
+  const total = cards.length;
+  let current = 0;
+
+  cards.forEach(function (_, i) {
+    const d = document.createElement('div');
+    d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', function () { goTo(i); });
+    dotsWrap.appendChild(d);
+  });
+
+  function posFor(index) {
+    const diff = ((index - current) % total + total) % total;
+    if (diff === 0) return 'center';
+    if (diff === 1) return 'right';
+    if (diff === total - 1) return 'left';
+    if (diff <= total / 2) return 'far-right';
+    return 'far-left';
+  }
+
+  function render() {
+    cards.forEach(function (card, i) {
+      card.setAttribute('data-rpos', posFor(i));
+    });
+    document.querySelectorAll('#review-carousel-dots .carousel-dot').forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    render();
+  }
+
+  document.getElementById('review-prev-btn').addEventListener('click', function () { goTo(current - 1); });
+  document.getElementById('review-next-btn').addEventListener('click', function () { goTo(current + 1); });
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const pos = card.getAttribute('data-rpos');
+      if (pos === 'left') goTo(current - 1);
+      if (pos === 'right') goTo(current + 1);
+    });
+  });
+
+  let touchStartX = 0;
+  const wrap = document.querySelector('.reviews-carousel-wrap');
+  wrap.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  wrap.addEventListener('touchend', function (e) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+
+  render();
+})();
+
