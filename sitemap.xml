@@ -3,13 +3,17 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://toploadertrading.com/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-21</lastmod>
     <image:image>
       <image:loc>https://toploadertrading.com/images/toploader-trading-pokemon-card-show-owensboro-ky.webp</image:loc>
       <image:title>Toploader Trading Co. Pokemon card show booth in Owensboro KY</image:title>
     </image:image>
     <image:image>
       <image:loc>https://toploadertrading.com/images/pokemon-card-1-owensboro-ky.webp</image:loc>
+      <image:title>Umbreon VMAX 215/203 Pokemon card for sale Owensboro KY</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://toploadertrading.com/images/pokemon-card-10-owensboro-ky.webp</image:loc>
       <image:title>Blastoise EX 142 Pokemon card for sale Owensboro KY</image:title>
     </image:image>
     <image:image>
@@ -26,7 +30,7 @@
     </image:image>
     <image:image>
       <image:loc>https://toploadertrading.com/images/pokemon-card-5-owensboro-ky.webp</image:loc>
-      <image:title>Pokemon Destined Rivals Elite Trainer Box for sale Owensboro KY</image:title>
+      <image:title>Eevee 188/167 Pokemon card for sale Owensboro KY</image:title>
     </image:image>
     <image:image>
       <image:loc>https://toploadertrading.com/images/pokemon-card-6-owensboro-ky.webp</image:loc>
@@ -35,10 +39,6 @@
     <image:image>
       <image:loc>https://toploadertrading.com/images/pokemon-card-7-owensboro-ky.webp</image:loc>
       <image:title>Gengar EX 269 Pokemon card for sale Owensboro KY</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://toploadertrading.com/images/pokemon-card-8-owensboro-ky.webp</image:loc>
-      <image:title>Umbreon 17 Pokemon card for sale Owensboro KY</image:title>
     </image:image>
     <image:image>
       <image:loc>https://toploadertrading.com/images/pokemon-card-9-owensboro-ky.webp</image:loc>
@@ -84,5 +84,9 @@
   <url>
     <loc>https://toploadertrading.com/pokemon-card-store-near-me-owensboro</loc>
     <lastmod>2026-04-11</lastmod>
+  </url>
+  <url>
+    <loc>https://toploadertrading.com/sell-graded-pokemon-cards-owensboro-ky</loc>
+    <lastmod>2026-04-21</lastmod>
   </url>
 </urlset>
