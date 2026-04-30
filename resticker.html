@@ -529,7 +529,7 @@ const SETTINGS_KEY  = 'rt_settings';
 // Simple password hash — change the hash below to change the password.
 // To generate: open browser console and run: await hashStr('your-password')
 // Default password: toploader2024
-const CORRECT_HASH  = 'a7dc7f5f8d4a1b9e2c3f0e6d8b4a2c9f1e7d3b5a8c6e4f2d0b9a7c5e3f1d8b6';
+const CORRECT_HASH  = '3cafdadb73618c0e7cb4033cdba9f4b711b2c82e3d516f64403b2f9441ae7b79';
 
 async function hashStr(s) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
