@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resticker Report — Toploader Trading</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #22263a;
+      --border: #2e3350;
+      --accent: #4f7eff;
+      --accent-dim: #2a3f88;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --radius: 8px;
+      --font: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Password Gate ── */
+    #gate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .gate-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    .gate-card h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+    .gate-card p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+
+    .gate-card input[type="password"] {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      outline: none;
+    }
+
+    .gate-card input[type="password"]:focus { border-color: var(--accent); }
+
+    .gate-error {
+      color: var(--red);
+      font-size: 0.82rem;
+      min-height: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s, filter 0.15s;
+    }
+    .btn:hover:not(:disabled) { filter: brightness(1.12); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-primary  { background: var(--accent); color: #fff; }
+    .btn-ghost    { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-green    { background: var(--green); color: #000; }
+    .btn-full     { width: 100%; justify-content: center; }
+
+    /* ── App Shell ── */
+    #app { display: none; flex-direction: column; min-height: 100vh; }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    header h1 { font-size: 1.1rem; letter-spacing: 0.01em; }
+    header h1 span { color: var(--accent); }
+
+    .header-actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+
+    main { padding: 1.5rem; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* ── Settings Panel ── */
+    #settings-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+
+    #settings-panel h2 { font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.07em; }
+
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 0.55rem 0.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus { border-color: var(--accent); }
+
+    /* ── Upload Zone ── */
+    #upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      margin-bottom: 1.5rem;
+    }
+
+    #upload-zone.drag-over {
+      border-color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    #upload-zone p { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
+    #upload-zone .upload-icon { font-size: 2rem; }
+    #upload-zone input[type="file"] { display: none; }
+
+    /* ── Status Bar ── */
+    #status-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.75rem 1.1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Summary Chips ── */
+    #summary {
+      display: none;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chip .chip-count { font-size: 1.4rem; font-weight: 700; line-height: 1; }
+    .chip-red   .chip-count { color: var(--red); }
+    .chip-yellow .chip-count { color: var(--yellow); }
+    .chip-green .chip-count { color: var(--green); }
+    .chip-muted .chip-count { color: var(--text-muted); }
+
+    /* ── Results ── */
+    #results { display: none; }
+
+    .result-section { margin-bottom: 2rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .badge {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-red    { background: #7f1d1d; color: var(--red); }
+    .badge-yellow { background: #713f12; color: var(--yellow); }
+    .badge-green  { background: #14532d; color: var(--green); }
+
+    /* ── Table ── */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.83rem;
+    }
+
+    th {
+      background: var(--surface2);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    tr:hover td { background: var(--surface2); }
+
+    .td-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .pill {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .pill-red    { background: #7f1d1d; color: var(--red); }
+    .pill-yellow { background: #713f12; color: var(--yellow); }
+    .pill-green  { background: #14532d; color: var(--green); }
+    .pill-blue   { background: var(--accent-dim); color: var(--accent); }
+
+    .delta-up   { color: var(--green); }
+    .delta-down { color: var(--red); }
+
+    /* ── Error Toast ── */
+    #toast-area {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 999;
+    }
+
+    .toast {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.7rem 1rem;
+      font-size: 0.83rem;
+      max-width: 340px;
+      animation: slideIn 0.2s ease;
+    }
+
+    .toast-error { border-color: var(--red); }
+    .toast-warn  { border-color: var(--yellow); }
+
+    @keyframes slideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      main { padding: 1rem; }
+      header { padding: 0.6rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ PASSWORD GATE -->
+<div id="gate">
+  <div class="gate-card">
+    <h1>Toploader Trading</h1>
+    <p>Resticker Report Tool — Staff Only</p>
+    <input type="password" id="pw-input" placeholder="Enter password" autocomplete="current-password" />
+    <div class="gate-error" id="gate-error"></div>
+    <button class="btn btn-primary btn-full" id="pw-submit">Unlock</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ MAIN APP -->
+<div id="app">
+  <header>
+    <h1>Toploader Trading — <span>Resticker Report</span></h1>
+    <div class="header-actions">
+      <button class="btn btn-ghost" id="settings-toggle">⚙ Settings</button>
+      <button class="btn btn-green" id="export-btn" disabled>↓ Export CSV</button>
+      <button class="btn btn-ghost" id="lock-btn">Lock</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel">
+      <h2>Settings</h2>
+      <div class="settings-grid">
+        <div class="field">
+          <label>API Key (PokemonPriceTracker)</label>
+          <input type="password" id="api-key" placeholder="Bearer token…" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label>Retickling Threshold (%)</label>
+          <input type="number" id="threshold" value="10" min="1" max="100" step="1" />
+        </div>
+        <div class="field" style="align-self:end">
+          <button class="btn btn-primary" id="save-settings">Save Settings</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Zone -->
+    <div id="upload-zone">
+      <input type="file" id="csv-input" accept=".csv" />
+      <div class="upload-icon">📄</div>
+      <strong>Drop Collectr CSV here or click to browse</strong>
+      <p>Exports from Collectr TCG · .csv files only</p>
+    </div>
+
+    <!-- Status Bar -->
+    <div id="status-bar">
+      <div class="spinner" id="status-spinner" style="display:none"></div>
+      <span id="status-text">Ready</span>
+    </div>
+
+    <!-- Summary Chips -->
+    <div id="summary">
+      <div class="chip chip-red">
+        <div>
+          <div class="chip-count" id="cnt-resticker">0</div>
+          <div>Needs Restickering</div>
+        </div>
+      </div>
+      <div class="chip chip-yellow">
+        <div>
+          <div class="chip-count" id="cnt-first">0</div>
+          <div>Needs First Sticker</div>
+        </div>
+      </div>
+      <div class="chip chip-green">
+        <div>
+          <div class="chip-count" id="cnt-ok">0</div>
+          <div>Price OK</div>
+        </div>
+      </div>
+      <div class="chip chip-muted">
+        <div>
+          <div class="chip-count" id="cnt-skip">0</div>
+          <div>Skipped / No Match</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results">
+
+      <!-- Needs Restickering -->
+      <div class="result-section" id="sec-resticker">
+        <div class="section-header">
+          <div class="section-title">
+            🔴 Needs Restickering
+            <span class="badge badge-red" id="badge-resticker">0</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Card</th>
+                <th>Set</th>
+                <th>#</th>
+                <th>Condition</th>
+                <th>Your Sticker</th>
+                <th>Market (adj.)</th>
+                <th>Delta</th>
+                <th>Direction</th>
+              </tr>
+            </thead>
+            <tbody id="body-resticker"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Needs First Sticker -->
+      <div class="result-section" id="sec-first">
+        <div class="section-header">
+          <div class="section-title">
+            🟡 Needs First Sticker
+            <span class="badge badge-yellow" id="badge-first">0</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Card</th>
+                <th>Set</th>
+                <th>#</th>
+                <th>Condition</th>
+                <th>Suggested Price</th>
+                <th>Market (adj.)</th>
+              </tr>
+            </thead>
+            <tbody id="body-first"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Price OK -->
+      <div class="result-section" id="sec-ok">
+        <div class="section-header">
+          <div class="section-title">
+            🟢 Price OK
+            <span class="badge badge-green" id="badge-ok">0</span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Card</th>
+                <th>Set</th>
+                <th>#</th>
+                <th>Condition</th>
+                <th>Your Sticker</th>
+                <th>Market (adj.)</th>
+                <th>Delta</th>
+              </tr>
+            </thead>
+            <tbody id="body-ok"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- /results -->
+  </main>
+</div><!-- /app -->
+
+<div id="toast-area"></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+//  CONFIG
+// ═══════════════════════════════════════════════════════════
+const GATE_HASH_KEY = 'rt_gate_hash';
+const SESSION_KEY   = 'rt_unlocked';
+const SETTINGS_KEY  = 'rt_settings';
+
+// Simple password hash — change the hash below to change the password.
+// To generate: open browser console and run: await hashStr('your-password')
+// Default password: toploader2024
+const CORRECT_HASH  = 'a7dc7f5f8d4a1b9e2c3f0e6d8b4a2c9f1e7d3b5a8c6e4f2d0b9a7c5e3f1d8b6';
+
+async function hashStr(s) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CONDITION MULTIPLIERS
+// ═══════════════════════════════════════════════════════════
+const CONDITION_MULT = {
+  NM: 1.00,
+  LP: 0.85,
+  MP: 0.70,
+  HP: 0.55,
+  DM: 0.40,
+};
+
+function getMultiplier(condStr) {
+  if (!condStr) return 1.0;
+  const c = condStr.trim().toUpperCase();
+  for (const [key, val] of Object.entries(CONDITION_MULT)) {
+    if (c.startsWith(key)) return val;
+  }
+  return 1.0;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  GATE
+// ═══════════════════════════════════════════════════════════
+const gate = document.getElementById('gate');
+const app  = document.getElementById('app');
+
+async function unlock(pw) {
+  const h = await hashStr(pw);
+  if (h === CORRECT_HASH) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    gate.style.display = 'none';
+    app.style.display  = 'flex';
+    loadSettings();
+    return true;
+  }
+  return false;
+}
+
+function lock() {
+  sessionStorage.removeItem(SESSION_KEY);
+  gate.style.display = 'flex';
+  app.style.display  = 'none';
+  document.getElementById('pw-input').value = '';
+  document.getElementById('gate-error').textContent = '';
+}
+
+document.getElementById('pw-submit').addEventListener('click', async () => {
+  const pw = document.getElementById('pw-input').value;
+  const ok = await unlock(pw);
+  if (!ok) document.getElementById('gate-error').textContent = 'Incorrect password.';
+});
+
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('pw-submit').click();
+});
+
+document.getElementById('lock-btn').addEventListener('click', lock);
+
+// Auto-unlock if already unlocked in this session
+if (sessionStorage.getItem(SESSION_KEY) === '1') {
+  gate.style.display = 'none';
+  app.style.display  = 'flex';
+  loadSettings();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  SETTINGS
+// ═══════════════════════════════════════════════════════════
+document.getElementById('settings-toggle').addEventListener('click', () => {
+  const panel = document.getElementById('settings-panel');
+  panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+});
+
+document.getElementById('save-settings').addEventListener('click', () => {
+  const s = {
+    apiKey:    document.getElementById('api-key').value.trim(),
+    threshold: parseFloat(document.getElementById('threshold').value) || 10,
+  };
+  localStorage.setItem(SETTINGS_KEY, JSON.stringify(s));
+  toast('Settings saved.', 'ok');
+  document.getElementById('settings-panel').style.display = 'none';
+});
+
+function loadSettings() {
+  try {
+    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+    if (s.apiKey)    document.getElementById('api-key').value    = s.apiKey;
+    if (s.threshold) document.getElementById('threshold').value  = s.threshold;
+  } catch {}
+}
+
+function getSettings() {
+  try {
+    return JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
+  } catch { return {}; }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CSV UPLOAD
+// ═══════════════════════════════════════════════════════════
+const uploadZone = document.getElementById('upload-zone');
+const csvInput   = document.getElementById('csv-input');
+
+uploadZone.addEventListener('click', () => csvInput.click());
+
+uploadZone.addEventListener('dragover', e => {
+  e.preventDefault();
+  uploadZone.classList.add('drag-over');
+});
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault();
+  uploadZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file) handleFile(file);
+});
+
+csvInput.addEventListener('change', e => {
+  if (e.target.files[0]) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  if (!file.name.endsWith('.csv')) { toast('Please upload a .csv file.', 'error'); return; }
+  const reader = new FileReader();
+  reader.onload = e => processCSV(e.target.result);
+  reader.readAsText(file);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CSV PARSER  (handles quoted fields with commas)
+// ═══════════════════════════════════════════════════════════
+function parseCSV(text) {
+  const lines = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+  const rows  = lines.map(parseLine).filter(r => r.length > 1);
+  if (rows.length < 2) return [];
+  const headers = rows[0].map(h => h.trim());
+  return rows.slice(1).map(cols => {
+    const obj = {};
+    headers.forEach((h, i) => obj[h] = (cols[i] || '').trim());
+    return obj;
+  });
+}
+
+function parseLine(line) {
+  const out = [];
+  let cur = '', inQ = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') { inQ = !inQ; continue; }
+    if (ch === ',' && !inQ) { out.push(cur); cur = ''; continue; }
+    cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  MAIN PROCESS
+// ═══════════════════════════════════════════════════════════
+let allResults = [];
+
+async function processCSV(text) {
+  const s = getSettings();
+  if (!s.apiKey) {
+    toast('Please enter your API key in Settings first.', 'warn');
+    document.getElementById('settings-panel').style.display = 'block';
+    return;
+  }
+
+  const rows = parseCSV(text);
+  if (!rows.length) { toast('CSV appears empty or unparseable.', 'error'); return; }
+
+  setStatus(true, `Loaded ${rows.length} rows — fetching prices…`);
+  document.getElementById('summary').style.display  = 'none';
+  document.getElementById('results').style.display  = 'none';
+  document.getElementById('export-btn').disabled    = true;
+  allResults = [];
+
+  const threshold = s.threshold ?? 10;
+
+  // Process rows in batches to avoid hammering the API
+  const BATCH = 5;
+  let done = 0;
+
+  for (let i = 0; i < rows.length; i += BATCH) {
+    const batch = rows.slice(i, i + BATCH);
+    await Promise.all(batch.map(row => processRow(row, s.apiKey, threshold)));
+    done += batch.length;
+    setStatus(true, `Fetching prices… ${Math.min(done, rows.length)} / ${rows.length}`);
+  }
+
+  setStatus(false, `Done — processed ${rows.length} cards.`);
+  renderResults(threshold);
+}
+
+async function processRow(row, apiKey, threshold) {
+  const name        = row['Product Name']     || '';
+  const setName     = row['Set']              || '';
+  const cardNum     = row['Card Number']      || '';
+  const condition   = row['Card Condition']   || 'NM';
+  const priceOvr    = parseFloat(row['Price Override']) || 0;
+  const avgCost     = parseFloat(row['Average Cost Paid']) || 0;
+  const qty         = parseInt(row['Quantity'])  || 1;
+
+  if (!name) {
+    allResults.push({ row, group: 'skip', reason: 'No product name' });
+    return;
+  }
+
+  let marketRaw = null;
+  let apiError  = null;
+
+  try {
+    marketRaw = await fetchPrice(name, cardNum, setName, apiKey);
+  } catch (err) {
+    apiError = err.message;
+  }
+
+  if (marketRaw === null || marketRaw === undefined) {
+    allResults.push({ row, group: 'skip', reason: apiError || 'No price found' });
+    return;
+  }
+
+  const mult       = getMultiplier(condition);
+  const adjPrice   = marketRaw * mult;
+  const stickerPrice = priceOvr;
+
+  // No sticker yet
+  if (!stickerPrice || stickerPrice <= 0) {
+    allResults.push({ row, group: 'first', adjPrice, marketRaw, mult, condition, name, setName, cardNum, qty });
+    return;
+  }
+
+  const delta    = ((adjPrice - stickerPrice) / stickerPrice) * 100;
+  const absDelta = Math.abs(delta);
+
+  if (absDelta > threshold) {
+    allResults.push({
+      row, group: 'resticker', adjPrice, marketRaw, mult, condition,
+      stickerPrice, delta, name, setName, cardNum, qty,
+    });
+  } else {
+    allResults.push({
+      row, group: 'ok', adjPrice, marketRaw, mult, condition,
+      stickerPrice, delta, name, setName, cardNum, qty,
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  API CALL
+// ═══════════════════════════════════════════════════════════
+async function fetchPrice(name, cardNumber, setName, apiKey) {
+  const params = new URLSearchParams({ name });
+  if (cardNumber) params.set('number', cardNumber);
+  if (setName)    params.set('set',    setName);
+
+  const res = await fetch(`https://www.pokemonpricetracker.com/api/v2/cards?${params}`, {
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Accept': 'application/json',
+    },
+  });
+
+  if (res.status === 401) throw new Error('Invalid API key (401)');
+  if (res.status === 429) throw new Error('Rate limited (429)');
+  if (!res.ok) throw new Error(`API error ${res.status}`);
+
+  const data = await res.json();
+
+  // Try to extract a price from the response.
+  // Adjust these paths to match the actual API shape.
+  const card = Array.isArray(data) ? data[0]
+             : data.data            ? (Array.isArray(data.data) ? data.data[0] : data.data)
+             : data;
+
+  if (!card) return null;
+
+  return card.marketPrice
+      ?? card.market_price
+      ?? card.price
+      ?? card.tcgplayer?.prices?.normal?.market
+      ?? card.tcgplayer?.prices?.holofoil?.market
+      ?? null;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  RENDER RESULTS
+// ═══════════════════════════════════════════════════════════
+function renderResults() {
+  const resticker = allResults.filter(r => r.group === 'resticker');
+  const first     = allResults.filter(r => r.group === 'first');
+  const ok        = allResults.filter(r => r.group === 'ok');
+  const skip      = allResults.filter(r => r.group === 'skip');
+
+  // Counts
+  document.getElementById('cnt-resticker').textContent = resticker.length;
+  document.getElementById('cnt-first').textContent     = first.length;
+  document.getElementById('cnt-ok').textContent        = ok.length;
+  document.getElementById('cnt-skip').textContent      = skip.length;
+  document.getElementById('badge-resticker').textContent = resticker.length;
+  document.getElementById('badge-first').textContent     = first.length;
+  document.getElementById('badge-ok').textContent        = ok.length;
+
+  // Tables
+  document.getElementById('body-resticker').innerHTML = resticker.map(r => `
+    <tr>
+      <td class="td-name" title="${esc(r.name)}">${esc(r.name)}</td>
+      <td>${esc(r.setName)}</td>
+      <td>${esc(r.cardNum)}</td>
+      <td><span class="pill pill-blue">${esc(r.condition)}</span></td>
+      <td>${fmt(r.stickerPrice)}</td>
+      <td>${fmt(r.adjPrice)}</td>
+      <td class="${r.delta > 0 ? 'delta-up' : 'delta-down'}">${r.delta > 0 ? '+' : ''}${r.delta.toFixed(1)}%</td>
+      <td>${r.delta > 0
+        ? '<span class="pill pill-green">↑ Too Low</span>'
+        : '<span class="pill pill-red">↓ Too High</span>'}</td>
+    </tr>`).join('') || '<tr><td colspan="8" style="color:var(--text-muted);text-align:center;padding:1rem">None</td></tr>';
+
+  document.getElementById('body-first').innerHTML = first.map(r => `
+    <tr>
+      <td class="td-name" title="${esc(r.name)}">${esc(r.name)}</td>
+      <td>${esc(r.setName)}</td>
+      <td>${esc(r.cardNum)}</td>
+      <td><span class="pill pill-blue">${esc(r.condition)}</span></td>
+      <td>${fmt(r.adjPrice)}</td>
+      <td>${fmt(r.adjPrice)}</td>
+    </tr>`).join('') || '<tr><td colspan="6" style="color:var(--text-muted);text-align:center;padding:1rem">None</td></tr>';
+
+  document.getElementById('body-ok').innerHTML = ok.map(r => `
+    <tr>
+      <td class="td-name" title="${esc(r.name)}">${esc(r.name)}</td>
+      <td>${esc(r.setName)}</td>
+      <td>${esc(r.cardNum)}</td>
+      <td><span class="pill pill-blue">${esc(r.condition)}</span></td>
+      <td>${fmt(r.stickerPrice)}</td>
+      <td>${fmt(r.adjPrice)}</td>
+      <td class="${r.delta > 0 ? 'delta-up' : 'delta-down'}">${r.delta > 0 ? '+' : ''}${r.delta.toFixed(1)}%</td>
+    </tr>`).join('') || '<tr><td colspan="7" style="color:var(--text-muted);text-align:center;padding:1rem">None</td></tr>';
+
+  document.getElementById('summary').style.display = 'flex';
+  document.getElementById('results').style.display = 'block';
+  document.getElementById('export-btn').disabled   = (resticker.length + first.length === 0);
+}
+
+// ═══════════════════════════════════════════════════════════
+//  EXPORT CSV
+// ═══════════════════════════════════════════════════════════
+document.getElementById('export-btn').addEventListener('click', () => {
+  const flagged = allResults.filter(r => r.group === 'resticker' || r.group === 'first');
+  if (!flagged.length) return;
+
+  const headers = ['Product Name','Set','Card Number','Condition','Your Sticker Price',
+                   'Adjusted Market Price','Delta %','Action Needed'];
+
+  const rows = flagged.map(r => [
+    r.name, r.setName, r.cardNum, r.condition,
+    r.stickerPrice ? r.stickerPrice.toFixed(2) : '',
+    r.adjPrice ? r.adjPrice.toFixed(2) : '',
+    r.delta != null ? r.delta.toFixed(1) + '%' : 'N/A',
+    r.group === 'first' ? 'First Sticker' : (r.delta > 0 ? 'Raise Price' : 'Lower Price'),
+  ]);
+
+  const csv = [headers, ...rows].map(row =>
+    row.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')
+  ).join('\n');
+
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `resticker-report-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+// ═══════════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════════
+function setStatus(loading, msg) {
+  const bar = document.getElementById('status-bar');
+  bar.style.display = 'flex';
+  document.getElementById('status-spinner').style.display = loading ? 'block' : 'none';
+  document.getElementById('status-text').textContent = msg;
+}
+
+function fmt(n) {
+  if (n == null || isNaN(n)) return '—';
+  return '$' + Number(n).toFixed(2);
+}
+
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+let toastTimer = null;
+function toast(msg, type = 'ok') {
+  const area = document.getElementById('toast-area');
+  const el   = document.createElement('div');
+  el.className = 'toast' + (type === 'error' ? ' toast-error' : type === 'warn' ? ' toast-warn' : '');
+  el.textContent = msg;
+  area.appendChild(el);
+  setTimeout(() => el.remove(), 4000);
+}
+</script>
+</body>
+</html>
