@@ -49,9 +49,13 @@ img { display: block; max-width: 100%; }
 .social-panel h3 { font-family: var(--font-display); font-size: 2rem; letter-spacing: .03em; line-height: 1.1; margin-bottom: 12px; color: white; }
 .social-panel p { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: 24px; }
 .social-btns { display: flex; flex-direction: column; gap: 10px; }
-.social-link { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 12px 16px; color: white; font-weight: 600; font-size: .88rem; transition: background .15s; }
-.social-link:hover { background: rgba(255,255,255,.14); }
-.social-link-arrow { opacity: .5; }
+.social-link { display: flex; align-items: center; gap: 14px; border-radius: 12px; padding: 16px 20px; color: white; font-weight: 600; font-size: .95rem; text-decoration: none; -webkit-tap-highlight-color: transparent; transition: opacity .15s; }
+.social-link:hover { opacity: .88; }
+.social-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+.social-link .lbl { flex: 1; }
+.social-link-arrow { opacity: .55; font-size: .9rem; }
+.social-link.btn-fb { background: #1877F2; }
+.social-link.btn-ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
 @media(max-width:900px) { .contact-grid { grid-template-columns: 1fr; } }
 
 /* Page intro popup — bulk + appointment */
